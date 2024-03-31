@@ -77,21 +77,55 @@ const NavBar = () => {
 
     return <>
         <nav className='sticky top-0 z-50 bg-white'>
-            <div className='mx-5 xl:mx-0' onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }} onMouseLeave={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+            <div
+                className='mx-5 xl:mx-0'
+                onMouseEnter={() => {
+                    setIsOthersNavLinkHovered(false);
+                    setIsCartNavBarVisible(false);
+                }}
+                onMouseLeave={() => {
+                    setIsOthersNavLinkHovered(false);
+                    setIsCartNavBarVisible(false);
+                }}>
                 <div className='flex justify-between max-w-[1200px] m-auto py-6'>
                     <ul className='hidden lg:flex gap-10 items-center'>
                         <li className='font-bold text-gray-500 hover:text-black'>
-                            <Link to="/" onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>Home</Link>
+                            <Link
+                                to="/"
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(false);
+                                    setIsCartNavBarVisible(false);
+                                }}>Home</Link>
                         </li>
                         <li className='font-bold text-gray-500 hover:text-black'>
-                            <Link to="/" onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>Shop</Link>
+                            <Link
+                                to="/"
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(false);
+                                    setIsCartNavBarVisible(false);
+                                }}>Shop</Link>
                         </li>
                         <li className='font-bold text-gray-500 hover:text-black'>
-                            <Link to="/" onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>About Us</Link>
+                            <Link
+                                to="/"
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(false);
+                                    setIsCartNavBarVisible(false)
+                                }}>About Us</Link>
                         </li>
                         <li className='font-bold text-gray-500'>
-                            <Link to="/" className=' hover:text-black' onMouseEnter={() => { setIsOthersNavLinkHovered(!isOthersNavLinkHovered); setIsCartNavBarVisible(false); setIsSearchNavBarVisible(false); setSearchValue('') }}>Others</Link>
-                            <div className={`others-link-hover-element ${isOthersNavLinkHovered && 'showContent'}`} onMouseLeave={() => setIsOthersNavLinkHovered(!isOthersNavLinkHovered)}>
+                            <Link
+                                to="/"
+                                className=' hover:text-black'
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(!isOthersNavLinkHovered);
+                                    setIsCartNavBarVisible(false);
+                                    setIsSearchNavBarVisible(false);
+                                    setSearchValue('')
+                                }}>Others</Link>
+                            <div
+                                className={`others-link-hover-element ${isOthersNavLinkHovered && 'showContent'}`}
+                                onMouseLeave={() => setIsOthersNavLinkHovered(!isOthersNavLinkHovered)}>
                                 {
                                     links.map((link) => {
                                         const { id, linkName, linkUrl } = link;
@@ -111,11 +145,22 @@ const NavBar = () => {
 
                     <ul className='flex gap-4 items-center'>
                         <li className='hidden sm:block' >
-                            <Link to="/" className='flex gap-1' onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(true); setIsSearchNavBarVisible(false); setSearchValue('') }}>
+                            <Link
+                                to="/"
+                                className='flex gap-1'
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(false);
+                                    setIsCartNavBarVisible(true);
+                                    setIsSearchNavBarVisible(false);
+                                    setSearchValue('')
+                                }}>
                                 <p>CART</p>
                                 <p>($0)</p>
                             </Link>
-                            <div className={`cart-hover-element ${isCartNavBarVisible && 'showCartInNav'}`} onMouseEnter={() => setIsCartNavBarVisible(true)} onMouseLeave={() => setIsCartNavBarVisible(false)}>
+                            <div
+                                className={`cart-hover-element ${isCartNavBarVisible && 'showCartInNav'}`}
+                                onMouseEnter={() => setIsCartNavBarVisible(true)}
+                                onMouseLeave={() => setIsCartNavBarVisible(false)}>
                                 <div className='cart-hover-body'>
                                     {
                                         temporaryCartNavItems.map((item) => {
@@ -141,7 +186,13 @@ const NavBar = () => {
                                                     </div>
                                                     <div className='relative' style={{ left: "12.2em", top: "-2.7em" }}>
                                                         <button>
-                                                            <box-icon name='x' color={`${toggleXIconInCartNavBar ? 'white' : 'grey'}`} size="sm" onMouseEnter={() => setToggleXIconInCartNavBar(true)} onMouseLeave={() => setToggleXIconInCartNavBar(false)}></box-icon>
+                                                            <box-icon
+                                                                name='x'
+                                                                color={`${toggleXIconInCartNavBar ? 'white' : 'grey'}`}
+                                                                size="sm"
+                                                                onMouseEnter={() => setToggleXIconInCartNavBar(true)}
+                                                                onMouseLeave={() => setToggleXIconInCartNavBar(false)}>
+                                                            </box-icon>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -174,8 +225,17 @@ const NavBar = () => {
 
                             {/* Search Nav */}
                             <div className={`search-nav-container ${isSearchNavBarVisible && 'showSearchNav'}`}>
-                                <button className='absolute left-[15.7em] top-[4px]' onClick={() => { setIsSearchNavBarVisible(false); setSearchValue('') }}>
-                                    <box-icon name='x' color='white' size="sm"></box-icon>
+                                <button
+                                    className='absolute left-[15.7em] top-[4px]'
+                                    onClick={() => {
+                                        setIsSearchNavBarVisible(false);
+                                        setSearchValue('');
+                                    }}>
+                                    <box-icon
+                                        name='x'
+                                        color='white'
+                                        size="sm">
+                                    </box-icon>
                                 </button>
                                 <div className='search-nav-bod mt-9 m-3'>
                                     <form onSubmit={(e) => e.preventDefault()}>
@@ -187,8 +247,18 @@ const NavBar = () => {
                                                 onChange={(e) => setSearchValue(e.target.value)}
                                             />
                                             <InputRightElement>
-                                                <button type="submit" style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}>
-                                                    <box-icon type="solid" name="right-arrow-alt" color="white"></box-icon>
+                                                <button
+                                                    type="submit"
+                                                    style={{
+                                                        backgroundColor: "transparent",
+                                                        border: "none",
+                                                        cursor: "pointer"
+                                                    }}>
+                                                    <box-icon
+                                                        type="solid"
+                                                        name="right-arrow-alt"
+                                                        color="white">
+                                                    </box-icon>
                                                 </button>
                                             </InputRightElement>
                                         </InputGroup>
@@ -198,37 +268,78 @@ const NavBar = () => {
                         </li>
 
                         <li className='hidden sm:block'>
-                            <Link to="/" className='flex gap-1' onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+                            <Link
+                                to="/"
+                                className='flex gap-1'
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(false);
+                                    setIsCartNavBarVisible(false)
+                                }}>
                                 <box-icon name='heart'></box-icon>
                                 <p>(0)</p>
                             </Link>
                         </li>
 
                         <li className='hidden sm:block'>
-                            <Link to="/" className='flex gap-1' onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+                            <Link
+                                to="/"
+                                className='flex gap-1'
+                                onMouseEnter={() => {
+                                    setIsOthersNavLinkHovered(false);
+                                    setIsCartNavBarVisible(false)
+                                }}>
                                 <box-icon name='user'></box-icon>
                                 <p className='text-[12px] font-bold mt-1'>LOGIN</p>
                             </Link>
                         </li>
 
-                        <li className='mt-2 hidden sm:block' onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+                        <li
+                            className='mt-2 hidden sm:block'
+                            onMouseEnter={() => {
+                                setIsOthersNavLinkHovered(false);
+                                setIsCartNavBarVisible(false)
+                            }}>
                             <button onClick={() => setIsSearchNavBarVisible(true)}>
-                                <box-icon name='search' rotate='90'></box-icon>
+                                <box-icon
+                                    name='search'
+                                    rotate='90'>
+                                </box-icon>
                             </button>
                         </li>
 
                         {/* Button for Drawer 1 */}
-                        <li className='mt-2 hidden lg:block' ref={btnForDrawer1} onClick={onOpen1} onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+                        <li
+                            className='mt-2 hidden lg:block'
+                            ref={btnForDrawer1}
+                            onClick={onOpen1}
+                            onMouseEnter={() => {
+                                setIsOthersNavLinkHovered(false);
+                                setIsCartNavBarVisible(false)
+                            }}>
                             <box-icon name='align-right'></box-icon>
                         </li>
 
                         {/* Button for Drawer 2 */}
-                        <li className='mt-2 block lg:hidden hidden sm:block' ref={btnForDrawer2} onClick={onOpen2} onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+                        <li
+                            className='mt-2 block lg:hidden hidden sm:block'
+                            ref={btnForDrawer2}
+                            onClick={onOpen2}
+                            onMouseEnter={() => {
+                                setIsOthersNavLinkHovered(false);
+                                setIsCartNavBarVisible(false)
+                            }}>
                             <box-icon name='align-middle'></box-icon>
                         </li>
 
                         {/* Button for Drawer 3 */}
-                        <li className='mt-2 block sm:hidden' ref={btnForDrawer3} onClick={onOpen3} onMouseEnter={() => { setIsOthersNavLinkHovered(false); setIsCartNavBarVisible(false) }}>
+                        <li
+                            className='mt-2 block sm:hidden'
+                            ref={btnForDrawer3}
+                            onClick={onOpen3}
+                            onMouseEnter={() => {
+                                setIsOthersNavLinkHovered(false);
+                                setIsCartNavBarVisible(false)
+                            }}>
                             <box-icon name='align-left'></box-icon>
                         </li>
                     </ul>
@@ -246,7 +357,9 @@ const NavBar = () => {
             blockScrollOnMount={false}
         >
             <DrawerOverlay bg="rgba(0, 0, 0, 0.0)" />
-            <DrawerContent bg="black" textColor="white">
+            <DrawerContent
+                bg="black"
+                textColor="white">
                 <DrawerCloseButton color="white" />
                 <DrawerHeader></DrawerHeader>
 
@@ -261,9 +374,20 @@ const NavBar = () => {
                             imageContainerRefs.current[id] = imageRef;
 
                             return (
-                                <div key={id} ref={imageRef} onMouseEnter={(e) => showInstagramLogoInDrawer1(e)} onMouseOut={(e) => hideInstagramLogoInDrawer1(e)}>
-                                    <div className="instagram-logo-container hidden-default-css" data-id={`${id}`}>
-                                        <box-icon name='instagram' type='logo' className="instagram-logo" color='#ffffff'></box-icon>
+                                <div
+                                    key={id}
+                                    ref={imageRef}
+                                    onMouseEnter={(e) => showInstagramLogoInDrawer1(e)}
+                                    onMouseOut={(e) => hideInstagramLogoInDrawer1(e)}>
+                                    <div
+                                        className="instagram-logo-container hidden-default-css"
+                                        data-id={`${id}`}>
+                                        <box-icon
+                                            name='instagram'
+                                            type='logo'
+                                            className="instagram-logo"
+                                            color='#ffffff'>
+                                        </box-icon>
                                     </div>
                                     <img src={imgUrl} alt="" className='drawer-1-img' />
                                 </div>
@@ -272,13 +396,27 @@ const NavBar = () => {
                     </div>
 
                     <div>
-                        <p className='text-center font-bold text-[13px] text-[#929292]' style={{ marginTop: "13.5em" }}>WE ARE AWESOME FOLOW US</p>
+                        <p
+                            className='text-center font-bold text-[13px] text-[#929292]'
+                            style={{ marginTop: "13.5em" }}>WE ARE AWESOME FOLOW US</p>
                     </div>
 
                     <div className='mt-5 flex justify-between w-[25%] m-auto'>
-                        <box-icon type='logo' name='twitter' color='#ffffff'></box-icon>
-                        <box-icon name='instagram' type='logo' color='#ffffff'></box-icon>
-                        <box-icon name='facebook' type='logo' color='#ffffff'></box-icon>
+                        <box-icon
+                            type='logo'
+                            name='twitter'
+                            color='#ffffff'>
+                        </box-icon>
+                        <box-icon
+                            name='instagram'
+                            type='logo'
+                            color='#ffffff'>
+                        </box-icon>
+                        <box-icon
+                            name='facebook'
+                            type='logo'
+                            color='#ffffff'>
+                        </box-icon>
                     </div>
                 </DrawerBody>
             </DrawerContent>
@@ -295,26 +433,50 @@ const NavBar = () => {
             blockScrollOnMount={false}
         >
             <DrawerOverlay bg="rgba(0, 0, 0, 0.0)" />
-            <DrawerContent bg="black" textColor="white">
+            <DrawerContent
+                bg="black"
+                textColor="white">
                 <DrawerCloseButton color="white" />
                 <DrawerHeader></DrawerHeader>
                 <DrawerBody>
-                    <div className={`w-[220px] m-auto mt-8 ${isLinksInDrawer2Visible && 'overflow-y-scroll'}`} style={{ height: "420px", scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                        <div className='' style={{ display: "block" }}>
-                            <Link to="/" className='text-[25px]'>
+                    <div
+                        className={`w-[220px] m-auto mt-8 ${isLinksInDrawer2Visible && 'overflow-y-scroll'}`}
+                        style={{
+                            height: "420px",
+                            scrollbarWidth: "none",
+                            msOverflowStyle: "none"
+                        }}>
+                        <div
+                            className=''
+                            style={{ display: "block" }}>
+                            <Link
+                                to="/"
+                                className='text-[25px]'>
                                 <p className='mt-2'>HOME</p>
                             </Link>
-                            <Link to="/" className='text-[25px]'>
+                            <Link
+                                to="/"
+                                className='text-[25px]'>
                                 <p className='mt-2'>SHOP</p>
                             </Link>
-                            <Link to="/" className='text-[25px]'>
+                            <Link
+                                to="/"
+                                className='text-[25px]'>
                                 <p className='mt-2'>ABOUT US</p>
                             </Link>
 
-                            <Link to="/" className='text-[25px] flex items-center gap-2' onClick={() => setIsLinksInDrawer2Visible(!isLinksInDrawer2Visible)}>
+                            <Link
+                                to="/"
+                                className='text-[25px] flex items-center gap-2'
+                                onClick={() => setIsLinksInDrawer2Visible(!isLinksInDrawer2Visible)}>
                                 <p className='mt-2'>OTHERS</p>
                                 <div className={`right-arrow-logo-container ${!isLinksInDrawer2Visible && 'rotateThisBro'}`}>
-                                    <box-icon type='solid' name='right-arrow' color='#ffffff' size='xs'></box-icon>
+                                    <box-icon
+                                        type='solid'
+                                        name='right-arrow'
+                                        color='#ffffff'
+                                        size='xs'>
+                                    </box-icon>
                                 </div>
                             </Link>
 
@@ -333,7 +495,9 @@ const NavBar = () => {
                         </div>
                     </div>
 
-                    <h1 className='text-center text-[28px] font-bold' style={{ marginTop: "5em" }}>TrendyMart</h1>
+                    <h1
+                        className='text-center text-[28px] font-bold'
+                        style={{ marginTop: "5em" }}>TrendyMart</h1>
                     <p className='text-center mt-1'>© 2024 TrendyMart Corporation</p>
                 </DrawerBody>
             </DrawerContent>
@@ -343,32 +507,56 @@ const NavBar = () => {
         <Drawer
             isOpen={isOpen3}
             placement='right'
-            onClose={() => { onClose3(); setSearchValue(); }}
+            onClose={() => {
+                onClose3();
+                setSearchValue();
+            }}
             finalFocusRef={btnForDrawer2}
             size="xs"
             blockScrollOnMount={false}
         >
             <DrawerOverlay bg="rgba(0, 0, 0, 0.0)" />
-            <DrawerContent bg="black" textColor="white">
+            <DrawerContent
+                bg="black"
+                textColor="white">
                 <DrawerCloseButton color="white" />
                 <DrawerHeader></DrawerHeader>
                 <DrawerBody>
-                    <div className={`w-[220px] m-auto mt-8 ${isLinksInDrawer2Visible && 'overflow-y-scroll'}`} style={{ height: "420px", scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                        <div className='' style={{ display: "block" }}>
-                            <Link to="/" className='text-[25px]'>
+                    <div className={`w-[220px] m-auto mt-8 ${isLinksInDrawer2Visible && 'overflow-y-scroll'}`}
+                        style={{
+                            height: "420px",
+                            scrollbarWidth: "none",
+                            msOverflowStyle: "none"
+                        }}>
+                        <div
+                            className=''
+                            style={{ display: "block" }}>
+                            <Link
+                                to="/"
+                                className='text-[25px]'>
                                 <p className='mt-2'>HOME</p>
                             </Link>
-                            <Link to="/" className='text-[25px]'>
+                            <Link
+                                to="/"
+                                className='text-[25px]'>
                                 <p className='mt-2'>SHOP</p>
                             </Link>
-                            <Link to="/" className='text-[25px]'>
+                            <Link
+                                to="/"
+                                className='text-[25px]'>
                                 <p className='mt-2'>ABOUT US</p>
                             </Link>
 
-                            <Link to="/" className='text-[25px] flex items-center gap-2' onClick={() => setIsLinksInDrawer2Visible(!isLinksInDrawer2Visible)}>
+                            <Link to="/"
+                                className='text-[25px] flex items-center gap-2'
+                                onClick={() => setIsLinksInDrawer2Visible(!isLinksInDrawer2Visible)}>
                                 <p className='mt-2'>OTHERS</p>
                                 <div className={`right-arrow-logo-container ${!isLinksInDrawer2Visible && 'rotateThisBro'}`}>
-                                    <box-icon type='solid' name='right-arrow' color='#ffffff' size='xs'></box-icon>
+                                    <box-icon
+                                        type='solid'
+                                        name='right-arrow'
+                                        color='#ffffff'
+                                        size='xs'></box-icon>
                                 </div>
                             </Link>
 
@@ -400,7 +588,13 @@ const NavBar = () => {
                                         onChange={(e) => setSearchValue(e.target.value)}
                                     />
                                 </InputGroup>
-                                <Button type='submit' colorScheme='gray' width='full' className='mt-2 mb-8'>Search</Button>
+                                <Button
+                                    type='submit'
+                                    colorScheme='gray'
+                                    width='full'
+                                    className='mt-2 mb-8'>
+                                    Search
+                                </Button>
                             </form>
                         </div>
                         <Link to='/'>
