@@ -1,8 +1,13 @@
 import NavBar from "../../NavBar/NavBar";
 import Carousel from "./Carousel/Carousel";
+
+import { ChakraProvider } from "@chakra-ui/react";
+
 const HomePage = () => {
     return <>
-        <NavBar />
+        <ChakraProvider>
+            <NavBar />
+        </ChakraProvider>
         <Carousel />
     </>
 }
