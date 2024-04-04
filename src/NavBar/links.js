@@ -1,5 +1,4 @@
 export const links = [
-    { id: 1, linkName: "What We do", linkUrl: "/" },
     { id: 2, linkName: "Our Team", linkUrl: "/" },
     { id: 3, linkName: "Meet The Crew", linkUrl: "/" },
     { id: 4, linkName: "Team Member", linkUrl: "/" },
