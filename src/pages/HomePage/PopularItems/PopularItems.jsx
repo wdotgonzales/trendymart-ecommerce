@@ -25,7 +25,7 @@ const PopularItems = () => {
     ];
 
     return <>
-        <section className='max-w-[1590px] m-auto'>
+        <section className='max-w-[1250px] m-auto'>
             <div className='mx-8'>
                 <p className='font-bold text-[30px] tracking-wider text-1 mt-[3em] mb-[1.5em] text-center'>POPULAR ITEMS.</p>
                 {/* <div>
