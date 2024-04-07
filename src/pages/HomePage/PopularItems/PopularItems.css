@@ -1,0 +1,77 @@
+.price {
+    left: -45%;
+    opacity: 1;
+}
+
+.priceHover {
+    animation: priceHover 0.2s ease-in forwards;
+}
+
+@keyframes priceHover {
+    from {
+        left: -45%;
+        opacity: 1;
+    }
+
+    to {
+        left: -35%;
+        opacity: 0;
+    }
+}
+
+.priceHoverNormalState {
+    animation: priceHoverNormalState 0.2s ease-in forwards;
+
+}
+
+@keyframes priceHoverNormalState {
+    from {
+        left: -35%;
+        opacity: 0;
+    }
+
+    to {
+        left: -45%;
+        opacity: 1;
+    }
+}
+
+
+/*  */
+.addToCart {
+    left: 0;
+    opacity: 0;
+}
+
+.addToCartHover {
+    animation: addToCartHover 0.3 ease-in forwards;
+}
+
+@keyframes addToCartHover {
+    from {
+        left: 0;
+        opacity: 0;
+    }
+
+    to {
+        left: 35%;
+        opacity: 1;
+    }
+}
+
+/* .addToCartNormalState {
+    animation: addToCartNormalState 0.3 ease-in forwards;
+
+}
+
+@keyframes addToCartNormalState {
+    from {
+        left: 35%;
+        opacity: 1;
+    }
+
+    to {
+        left: 0;
+        opacity: 0;
+    }
+} */
