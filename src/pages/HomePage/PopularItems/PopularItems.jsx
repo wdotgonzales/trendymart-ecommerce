@@ -24,17 +24,17 @@ const PopularItems = () => {
         child[1].classList.remove('priceHoverNormalState');
         child[1].classList.add('priceHover');
 
-        // child[0].classList.remove('addToCart');
-        // child[0].classList.remove('addToCartNormalState');
-        // child[0].classList.add('addToCartHover');
+        child[0].classList.remove('addToCart');
+        child[0].classList.remove('addToCartNormalState');
+        child[0].classList.add('addToCartHover');
     }
 
     function normalState(child) {
         child[1].classList.remove('priceHover');
         child[1].classList.add('priceHoverNormalState');
 
-        // child[0].classList.add('addToCartHover');
-        // child[0].classList.add('addToCartNormalState');
+        child[0].classList.remove('addToCartHover');
+        child[0].classList.add('addToCartNormalState');
     }
 
 
@@ -66,7 +66,10 @@ const PopularItems = () => {
                                     </div>
 
                                     <div className='flex justify-between'>
-                                        <p className={`text-center relative addToCart`}>Add to Cart</p>
+                                        <button className={`text-center relative addToCart`}>
+                                            <p>ADD TO CART</p>
+                                        </button>
+
                                         <p className={`text-center mb-2 text-[#979797] relative price`}>${price}</p>
                                     </div>
                                 </div >
