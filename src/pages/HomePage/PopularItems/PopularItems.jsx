@@ -80,7 +80,7 @@ const PopularItems = () => {
 
 
                 <Link to="/">
-                    <div className="text-center sm:text-left mt-5">
+                    <div className="text-center sm:text-left mt-[3em]">
                         <div className='inline-block text-left'>
                             <div className='flex gap-1'>
                                 <p className='text-[21px] tracking-wider text-1 mt-[1em]'>Go To Shop</p>
