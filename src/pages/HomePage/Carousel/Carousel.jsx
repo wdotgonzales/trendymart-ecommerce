@@ -27,7 +27,7 @@ const Carousel = () => {
     return (
         <>
             {/* xl screensize  */}
-            <section className='bg-gray-200 mx-[7em] overflow-hidden hidden lg:block'>
+            <section className='relative bg-gray-200 mx-[7em] overflow-hidden hidden lg:block'>
                 {/* Slides */}
 
                 <div className={`${currentSlide !== 1 ? 'hidden' : ''}`}>
@@ -72,27 +72,27 @@ const Carousel = () => {
                     </div>
                 </div>
 
-                {/* Slide Number */}
-                <div className='absolute top-[20em] ml-[-3.5em]'>
-                    <div className='absolute top-[1em] left-[3.5em] ml-[-3.5em]'>
-                        {[1, 2, 3].map((slideNumber) => (
-                            <div
-                                key={slideNumber}
-                                onClick={() => handleSlideChange(slideNumber)}
-                                onMouseEnter={() => setCurrentHoveredNumber(slideNumber)}
-                                onMouseLeave={() => setCurrentHoveredNumber(null)}
-                                className='mt-2'
-                            >
-                                <button className='flex items-center'>
-                                    <p className={`font-bold ${currentSlide === slideNumber || currentHoveredNumber === slideNumber ? 'hovered-black-text' : 'defaultTextColor'}`}>{slideNumber.toString().padStart(2, '0')}</p>
-                                    <div className={`p-[1px] w-[30px] ml-[10.5px] ${currentSlide === slideNumber || currentHoveredNumber === slideNumber ? 'extendLineWidthWithAnimationHover' : 'defaultLineBgColor'}`}></div>
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
             </section>
+
+            {/* Slide Number */}
+            <div className='absolute top-[20em] ml-[-3.5em] hidden lg:block'>
+                <div className='absolute top-[1em] left-[8em]'>
+                    {[1, 2, 3].map((slideNumber) => (
+                        <div
+                            key={slideNumber}
+                            onClick={() => handleSlideChange(slideNumber)}
+                            onMouseEnter={() => setCurrentHoveredNumber(slideNumber)}
+                            onMouseLeave={() => setCurrentHoveredNumber(null)}
+                            className='mt-2'
+                        >
+                            <button className='flex items-center'>
+                                <p className={`font-bold ${currentSlide === slideNumber || currentHoveredNumber === slideNumber ? 'hovered-black-text' : 'defaultTextColor'}`}>{slideNumber.toString().padStart(2, '0')}</p>
+                                <div className={`p-[1px] w-[30px] ml-[10.5px] ${currentSlide === slideNumber || currentHoveredNumber === slideNumber ? 'extendLineWidthWithAnimationHover' : 'defaultLineBgColor'}`}></div>
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
             {/* lg screen size */}
             <section className='bg-gray-200 overflow-hidden block lg:hidden hidden md:block'>
