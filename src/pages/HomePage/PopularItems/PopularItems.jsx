@@ -19,7 +19,7 @@ const PopularItems = () => {
         { id: 4, name: "DECO ACCESSORY", price: 402, rating: 4.5, url: "https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h1-product-6-505x505.jpg" },
     ];
 
-    function hoverState(child) {
+    function hoverStateAddToCartPrice(child) {
         child[1].classList.remove('price');
         child[1].classList.remove('priceNormalState');
         child[1].classList.add('priceHover');
@@ -29,12 +29,23 @@ const PopularItems = () => {
         child[0].classList.add('addToCartHover');
     }
 
-    function normalState(child) {
+    function normalStateAddToCartPrice(child) {
         child[1].classList.remove('priceHover');
         child[1].classList.add('priceNormalState');
 
         child[0].classList.remove('addToCartHover');
         child[0].classList.add('addToCartNormalState');
+    }
+
+    function hoverStateQuickLookFavorite(child) {
+        child.classList.remove('QuickLookFavorite');
+        child.classList.remove('QuickLookFavoriteNormalState');
+        child.classList.add('QuickLookFavoriteHoverState');
+    }
+
+    function normalStateQuickLookFavorite(child) {
+        child.classList.remove('QuickLookFavoriteHoverState');
+        child.classList.add('QuickLookFavoriteNormalState');
     }
 
 
@@ -43,7 +54,6 @@ const PopularItems = () => {
             <div className='mx-8'>
                 <p className='font-bold text-[30px] tracking-wider text-1 mt-[3em] mb-[1.5em] text-center'>POPULAR ITEMS.</p>
 
-                {/* Work on this part lil nigga */}
                 <div className='mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10'>
                     {
                         temporaryPopularItems.map((item) => {
@@ -56,10 +66,33 @@ const PopularItems = () => {
                                 <div
                                     ref={popularItem}
                                     key={id}
-                                    onMouseEnter={() => hoverState(popularItem.current.children[3].children)}
-                                    onMouseLeave={() => normalState(popularItem.current.children[3].children)}
+                                    onMouseEnter={() => {
+                                        hoverStateAddToCartPrice(popularItem.current.children[3].children)
+                                        hoverStateQuickLookFavorite(popularItem.current.children[0].children[1])
+                                    }}
+                                    onMouseLeave={() => {
+                                        normalStateAddToCartPrice(popularItem.current.children[3].children)
+                                        normalStateQuickLookFavorite(popularItem.current.children[0].children[1])
+                                    }}
                                 >
-                                    <Link to="/"><img src={url} alt="" /></Link>
+                                    <div className='relative overflow-hidden h-auto'>
+                                        <Link to="/">
+                                            <img src={url} alt="" />
+                                        </Link>
+                                        <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
+                                            <button onClick={() => alert('im clicked')}>
+                                                <div className='bg-black text-white px-4 py-[6px] text-[12px]'>
+                                                    <p className='font-bold'>QUICK LOOK</p>
+                                                </div>
+                                            </button>
+                                            <div className='bg-gray-500 py-[1px] px-2'>
+                                                <div className='mt-1'>
+                                                    <box-icon name='heart' type='solid' color='#ffffff' size="xs"></box-icon>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <Link to="/"><p className='text-center font-bold mt-3'>{name}</p></Link>
                                     <div className='text-center'>
                                         <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />

@@ -95,3 +95,37 @@
         opacity: 0;
     }
 }
+
+/* Quick Look & Favorite */
+
+.QuickLookFavorite {
+    bottom: -30px;
+}
+
+.QuickLookFavoriteHoverState {
+    animation: QuickLookFavoriteHoverState 0.3s ease-in forwards;
+}
+
+@keyframes QuickLookFavoriteHoverState {
+    from {
+        bottom: -30px;
+    }
+
+    to {
+        bottom: 0px;
+    }
+}
+
+.QuickLookFavoriteNormalState {
+    animation: QuickLookFavoriteNormalState 0.3s ease-in forwards;
+}
+
+@keyframes QuickLookFavoriteNormalState {
+    from {
+        bottom: 0px;
+    }
+
+    to {
+        bottom: -30px;
+    }
+}
