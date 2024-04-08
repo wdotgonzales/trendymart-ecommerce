@@ -85,11 +85,13 @@ const PopularItems = () => {
                                                     <p className='font-bold'>QUICK LOOK</p>
                                                 </div>
                                             </button>
-                                            <div className='bg-gray-500 py-[1px] px-2'>
-                                                <div className='mt-1'>
-                                                    <box-icon name='heart' type='solid' color='#ffffff' size="xs"></box-icon>
+                                            <button onClick={() => alert('<3')}>
+                                                <div className='bg-gray-500 py-[1px] px-2'>
+                                                    <div className='mt-1'>
+                                                        <box-icon name='heart' type='solid' color='#ffffff' size="xs"></box-icon>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </button>
                                         </div>
                                     </div>
 
