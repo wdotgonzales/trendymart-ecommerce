@@ -76,7 +76,7 @@ const Carousel = () => {
 
             {/* Slide Number */}
             <div className='absolute top-[20em] ml-[-3.5em] hidden lg:block'>
-                <div className='absolute top-[1em] left-[8em]'>
+                <div className='absolute top-[1em] left-[6.9em]'>
                     {[1, 2, 3].map((slideNumber) => (
                         <div
                             key={slideNumber}
