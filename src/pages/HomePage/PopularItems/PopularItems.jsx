@@ -21,7 +21,7 @@ const PopularItems = () => {
 
     function hoverState(child) {
         child[1].classList.remove('price');
-        child[1].classList.remove('priceHoverNormalState');
+        child[1].classList.remove('priceNormalState');
         child[1].classList.add('priceHover');
 
         child[0].classList.remove('addToCart');
@@ -31,7 +31,7 @@ const PopularItems = () => {
 
     function normalState(child) {
         child[1].classList.remove('priceHover');
-        child[1].classList.add('priceHoverNormalState');
+        child[1].classList.add('priceNormalState');
 
         child[0].classList.remove('addToCartHover');
         child[0].classList.add('addToCartNormalState');
@@ -65,12 +65,12 @@ const PopularItems = () => {
                                         <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
                                     </div>
 
-                                    <div className='flex justify-between'>
-                                        <button className={`text-center relative addToCart`}>
+                                    <div className='relative w-full'>
+                                        <button className={`text-center absolute addToCart text-[#979797] tracking-wider font-bold`}>
                                             <p>ADD TO CART</p>
                                         </button>
 
-                                        <p className={`text-center mb-2 text-[#979797] relative price`}>${price}</p>
+                                        <p className={`mb-2 text-[#979797] absolute price`}>${price}</p>
                                     </div>
                                 </div >
                             </>
@@ -80,7 +80,7 @@ const PopularItems = () => {
 
 
                 <Link to="/">
-                    <div className="text-center sm:text-left">
+                    <div className="text-center sm:text-left mt-5">
                         <div className='inline-block text-left'>
                             <div className='flex gap-1'>
                                 <p className='text-[21px] tracking-wider text-1 mt-[1em]'>Go To Shop</p>

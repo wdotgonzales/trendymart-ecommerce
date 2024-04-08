@@ -1,125 +1,97 @@
 .price {
-    left: -45%;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
     opacity: 1;
 }
 
 .priceHover {
-    animation: priceHover 0.2s ease-in forwards;
+    animation: priceHover 0.3s ease-in forwards;
 }
 
 @keyframes priceHover {
     from {
-        left: -45%;
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 1;
+        display: block;
     }
 
     to {
-        left: -35%;
+        left: 55%;
+        transform: translateX(55%);
         opacity: 0;
+        display: none;
     }
 }
 
-.priceHoverNormalState {
-    animation: priceHoverNormalState 0.2s ease-in forwards;
+.priceNormalState {
+    animation: priceNormalState 0.3s ease-in forwards;
 
 }
 
-@keyframes priceHoverNormalState {
+@keyframes priceNormalState {
     from {
-        left: -35%;
+        left: 55%;
+        transform: translateX(55%);
         opacity: 0;
+        display: none;
     }
 
     to {
-        left: -45%;
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 1;
+        display: block;
     }
 }
 
 
+/* Add to Car */
 .addToCart {
-    left: 0%;
+    display: none;
+    left: 10%;
+    transform: translateX(-10%);
     opacity: 0;
 }
 
-
-
-
 .addToCartHover {
     animation: addToCartHover 0.3s ease-in forwards;
+
 }
 
 @keyframes addToCartHover {
     from {
+        display: none;
+        left: 10%;
+        transform: translateX(-10%);
         opacity: 0;
-        left: 0%;
     }
 
     to {
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 1;
-        left: 34%;
     }
 }
-
-@media only screen and (max-width: 1279px) {
-    @keyframes addToCartHover {
-        from {
-            opacity: 0;
-            left: 0%;
-        }
-
-        to {
-            opacity: 1;
-            left: 38%;
-        }
-    }
-
-}
-
-@media only screen and (max-width: 1023px) {
-    @keyframes addToCartHover {
-        from {
-            opacity: 0;
-            left: 0%;
-        }
-
-        to {
-            opacity: 1;
-            left: 41.5%;
-        }
-    }
-
-}
-
-@media only screen and (max-width: 771px) {
-    @keyframes addToCartHover {
-        from {
-            opacity: 0;
-            left: 0%;
-        }
-
-        to {
-            opacity: 1;
-            left: 38.5%;
-        }
-    }
-
-}
-
 
 .addToCartNormalState {
     animation: addToCartNormalState 0.3s ease-in forwards;
 }
 
-
 @keyframes addToCartNormalState {
     from {
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 1;
-        left: 34%;
     }
 
     to {
+        display: none;
+        left: 10%;
+        transform: translateX(-10%);
         opacity: 0;
-        left: 0%;
     }
 }
