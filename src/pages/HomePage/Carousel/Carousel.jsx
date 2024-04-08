@@ -141,20 +141,20 @@ const Carousel = () => {
                     <button
                         onClick={() => handleSlideChange(1)}>
                         <div
-                            className={`${currentSlide === 1 ? 'bg-gray-500' : 'bg-gray-50'} w-[20px] rounded-full h-[1em] w-[1em]`}>
+                            className={`${currentSlide === 1 ? 'bg-gray-500' : 'bg-gray-50'} rounded-full p-2`}>
                         </div>
                     </button>
                     <button
                         onClick={() => handleSlideChange(2)}>
                         <div
 
-                            className={`${currentSlide === 2 ? 'bg-gray-500' : 'bg-gray-50'} w-[20px] rounded-full h-[1em] w-[1em]`}>
+                            className={`${currentSlide === 2 ? 'bg-gray-500' : 'bg-gray-50'} rounded-full p-2`}>
                         </div>
                     </button>
                     <button
                         onClick={() => handleSlideChange(3)}>
                         <div
-                            className={`${currentSlide === 3 ? 'bg-gray-500' : 'bg-gray-50'} w-[20px] rounded-full h-[1em] w-[1em]`}>
+                            className={`${currentSlide === 3 ? 'bg-gray-500' : 'bg-gray-50'} rounded-full p-2`}>
                         </div>
                     </button>
                 </div>
@@ -206,20 +206,20 @@ const Carousel = () => {
                     <button
                         onClick={() => handleSlideChange(1)}>
                         <div
-                            className={`${currentSlide === 1 ? 'bg-gray-500' : 'bg-gray-50'} w-[20px] rounded-full h-[1em] w-[1em]`}>
+                            className={`${currentSlide === 1 ? 'bg-gray-500' : 'bg-gray-50'} rounded-full p-2`}>
                         </div>
                     </button>
                     <button
                         onClick={() => handleSlideChange(2)}>
                         <div
 
-                            className={`${currentSlide === 2 ? 'bg-gray-500' : 'bg-gray-50'} w-[20px] rounded-full h-[1em] w-[1em]`}>
+                            className={`${currentSlide === 2 ? 'bg-gray-500' : 'bg-gray-50'} rounded-full p-2`}>
                         </div>
                     </button>
                     <button
                         onClick={() => handleSlideChange(3)}>
                         <div
-                            className={`${currentSlide === 3 ? 'bg-gray-500' : 'bg-gray-50'} w-[20px] rounded-full h-[1em] w-[1em]  `}>
+                            className={`${currentSlide === 3 ? 'bg-gray-500' : 'bg-gray-50'} rounded-full p-2 `}>
                         </div>
                     </button>
                 </div>
