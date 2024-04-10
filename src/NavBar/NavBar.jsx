@@ -76,7 +76,7 @@ const NavBar = () => {
     ];
 
     return <>
-        <nav className='sticky top-0 z-50 bg-white'>
+        <nav className='sticky top-0 z-10 bg-white'>
             <div
                 className='mx-5 xl:mx-0'
                 onMouseEnter={() => {

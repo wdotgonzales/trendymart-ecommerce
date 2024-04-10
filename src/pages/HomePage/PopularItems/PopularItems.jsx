@@ -8,16 +8,14 @@ import {
     Route
 } from "react-router-dom";
 
+import { temporaryPopularItems } from './temporaryPopularItems';
+import PopularItemsModal from './PopularItemsModal';
+
 const PopularItems = () => {
 
     const containerElementOfPopularItems = useRef([]);
 
-    const temporaryPopularItems = [
-        { id: 1, name: "BASKET WITH HANDLES", price: 68, rating: 4.5, url: "https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h1-product-8-505x505.jpg" },
-        { id: 2, name: "WALL CLOCK", price: 168, rating: 3.5, url: "https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h1-product-5-505x505.jpg" },
-        { id: 3, name: "FLOWER VASE", price: 200, rating: 2.7, url: "https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h1-product-7-505x505.jpg" },
-        { id: 4, name: "DECO ACCESSORY", price: 402, rating: 4.5, url: "https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h1-product-6-505x505.jpg" },
-    ];
+    const [isQuickLookModalHidden, setIsQuickLookModalHidden] = useState(true);
 
     function hoverStateAddToCartPrice(child) {
         child[1].classList.remove('price');
@@ -61,7 +59,6 @@ const PopularItems = () => {
 
                             const popularItem = useRef(null);
                             containerElementOfPopularItems.current[id] = popularItem;
-
                             return <>
                                 <div
                                     ref={popularItem}
@@ -80,11 +77,16 @@ const PopularItems = () => {
                                             <img src={url} alt="" />
                                         </Link>
                                         <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
-                                            <button onClick={() => alert('im clicked')}>
+                                            {/* <button onClick={() => setIsQuickLookModalHidden(false)}>
                                                 <div className='bg-black text-white px-4 py-[6px] text-[12px]'>
                                                     <p className='font-bold'>QUICK LOOK</p>
                                                 </div>
-                                            </button>
+                                            </button> */}
+                                            <Link to={`?productId=${id}`} onClick={() => setIsQuickLookModalHidden(false)}>
+                                                <div className='bg-black text-white px-4 py-[6px] text-[12px]'>
+                                                    <p className='font-bold'>QUICK LOOK</p>
+                                                </div>
+                                            </Link>
                                             <button onClick={() => alert('<3')}>
                                                 <div className='bg-gray-500 py-[1px] px-2'>
                                                     <div className='mt-1'>
@@ -108,6 +110,14 @@ const PopularItems = () => {
                                         <p className={`mb-2 text-[#979797] absolute price`}>${price}</p>
                                     </div>
                                 </div >
+
+
+
+                                {/* Modal for Quick Look Button */}
+                                <PopularItemsModal
+                                    isQuickLookModalHidden={isQuickLookModalHidden}
+                                    setIsQuickLookModalHidden={setIsQuickLookModalHidden}
+                                />
                             </>
                         })
                     }
@@ -129,6 +139,8 @@ const PopularItems = () => {
 
             </div>
         </section >
+
+
     </>
 }
 
