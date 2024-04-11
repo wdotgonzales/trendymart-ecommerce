@@ -14,7 +14,7 @@ const OurTeam = () => {
                 data.map((singleData) => {
                     const { id, imgSrc, name, position, description } = singleData;
                     return <>
-                        <div className="text-center">
+                        <div key={id} className="text-center">
                             <img src={imgSrc} alt="" className="max-w-[200px] m-auto rounded-full" />
                             <p className="font-bold tracking-wider text-[1.2em] mt-5">{name}</p>
                             <p className="my-5 font-bold text-[#979797]">{position}</p>
