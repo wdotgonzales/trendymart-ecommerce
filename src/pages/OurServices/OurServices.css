@@ -1,0 +1,20 @@
+#background-img-container-1 {
+    background-image: url('https://wallpapers.com/images/hd/furniture-background-7ifkp3n7tclmmr06.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    height: 320px;
+    filter: brightness(0.5);
+    /* Adjust the brightness value as needed */
+}
+
+
+#background-img-container-2 {
+    background-image: url('https://wallpapers.com/images/hd/aesthetic-home-with-white-sofa-f1u30yhhfjfac48i.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    /* Adjust the brightness value as needed */
+}

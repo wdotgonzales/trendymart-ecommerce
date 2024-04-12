@@ -2,9 +2,13 @@ import NavBar from "../../NavBar/NavBar";
 import Footer from "../../Footer/Footer";
 import data from "./data";
 
+import { ChakraProvider } from "@chakra-ui/react";
+
 const OurTeam = () => {
     return <>
-        <NavBar />
+        <ChakraProvider>
+            <NavBar />
+        </ChakraProvider>
         <p className="text-center mt-[2em] font-bold text-[2.5em] tracking-wider mx-10">MEET OUR TEAM EXPERTS</p>
         <p className="text-center mt-[1em] text-[1.3em] text-[#979797] mx-10 mb-[4.5em]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci.
