@@ -9,7 +9,7 @@ const OurTeam = () => {
         <p className="text-center mt-[1em] text-[1.3em] text-[#979797] mx-10 mb-[4.5em]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci.
         </p>
-        <div className="max-w-[1500px] mt-10 mb-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[3em] gap-y-[7em] pb-[8em]">
+        <div className="max-w-[1300px] mt-10 mb-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[3em] gap-y-[7em] pb-[8em]">
             {
                 data.map((singleData) => {
                     const { id, imgSrc, name, position, description } = singleData;
