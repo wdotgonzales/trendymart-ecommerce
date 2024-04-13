@@ -1,0 +1,9 @@
+.background-img-container-1 {
+    background-image: url('https://www.wcpsolutions.com/wp-content/uploads/2023/11/e-bill-a-new-way-to-pay.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    height: 550px;
+    filter: brightness(0.5);
+}
