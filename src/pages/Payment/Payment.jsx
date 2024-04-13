@@ -14,7 +14,7 @@ const Payment = () => {
 
                 <div className='py-[5em] grid grid-cols-1 lg:grid-cols-3 gap-5'>
 
-                    <div className='pb-[1.5em] px-[1.5em]'>
+                    <div className='pb-[0em] px-[0em] mb-5 lg:pb-[1.5em] lg:px-[1.5em]'>
                         <p className='font-bold text-[1.4em]'>PERFECT PLAN</p>
                         <p className='text-[#979797] mt-3 mb-8'>Successful brands get into the mind slowly. A blurb in a magazine.
                             A mention in a newspaper. A comment from a friend. A display in a retail
