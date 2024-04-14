@@ -1,7 +1,6 @@
 import NavBar from "../../NavBar/NavBar";
 import Footer from "../../Footer/Footer";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
 
 import cards from "./giftCardsData";
 
