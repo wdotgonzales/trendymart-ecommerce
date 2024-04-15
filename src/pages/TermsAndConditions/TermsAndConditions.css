@@ -1,0 +1,9 @@
+.img-container {
+    background-image: url('https://wallpapers.com/images/hd/girls-working-in-dark-room-wtlcnwgfyy71fa10.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    height: 550px;
+    filter: brightness(0.5);
+}

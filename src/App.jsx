@@ -6,6 +6,7 @@ import PricingPlans from './pages/PricingPlans/PricingPlans';
 import Payment from './pages/Payment/Payment';
 import Testimonials from './pages/Testimonials/Testimonials';
 import GiftCards from './pages/GiftCards/GiftCards';
+import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 function App() {
   return (
     <>
@@ -15,7 +16,8 @@ function App() {
       {/* <PricingPlans /> */}
       {/* <Payment /> */}
       {/* <Testimonials /> */}
-      <GiftCards />
+      {/* <GiftCards /> */}
+      <TermsAndConditions />
     </>
   )
 }
