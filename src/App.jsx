@@ -7,6 +7,7 @@ import Payment from './pages/Payment/Payment';
 import Testimonials from './pages/Testimonials/Testimonials';
 import GiftCards from './pages/GiftCards/GiftCards';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
+import ContactUs from './pages/ContactUs/ContactUs';
 function App() {
   return (
     <>
@@ -17,7 +18,8 @@ function App() {
       {/* <Payment /> */}
       {/* <Testimonials /> */}
       {/* <GiftCards /> */}
-      <TermsAndConditions />
+      {/* <TermsAndConditions /> */}
+      <ContactUs />
     </>
   )
 }

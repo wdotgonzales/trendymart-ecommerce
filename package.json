@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@vis.gl/react-google-maps": "^0.8.3",
     "boxicons": "^2.1.4",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.8.0",
