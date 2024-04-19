@@ -33,7 +33,7 @@ const MapComponent = () => {
                 });
             });
     };
-    return <>
+    return <>   
         <APIProvider apiKey={api}>
             <Map
                 style={{ width: 'auto', height: '420px' }}

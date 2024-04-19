@@ -8,6 +8,7 @@ import Testimonials from './pages/Testimonials/Testimonials';
 import GiftCards from './pages/GiftCards/GiftCards';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import ContactUs from './pages/ContactUs/ContactUs';
+import FAQ from './pages/FAQ/FAQ';
 function App() {
   return (
     <>
@@ -19,7 +20,8 @@ function App() {
       {/* <Testimonials /> */}
       {/* <GiftCards /> */}
       {/* <TermsAndConditions /> */}
-      <ContactUs />
+      {/* <ContactUs /> */}
+      <FAQ />
     </>
   )
 }

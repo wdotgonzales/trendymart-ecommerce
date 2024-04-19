@@ -1,0 +1,10 @@
+.coverimage-container-1 {
+    background-image: url('https://img2.wallspic.com/crops/8/7/9/9/29978/29978-technical_support-interior_design-desk-furniture-table-1920x1080.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    height: 450px;
+    filter: brightness(0.7);
+    /* Adjust the brightness value as needed */
+}
