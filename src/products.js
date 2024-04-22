@@ -249,32 +249,7 @@ const products = [
         path: "basket-with-handles"
     },
 
-    {
-        id: 10,
-        name: "ELEGANT PENDANT",
-        price: 290,
-        ratingAvg: 5.0,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, 
-                      eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes 
-                      nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.`,
-        productImgs: [
-            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h3-product-2.jpgg',
-            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-2-gallery-1-1.jpg',
-            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-2-gallery-2-1.jpg',
-            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-2-gallery-3-1.jpg',
-            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-2-gallery-4-1.jpg'
-        ],
 
-        color: ["Black,Orange"],
-        material: ["Chrome"],
-        weight: "2 kg",
-        dimensions: "10 x 10 x 15 cm",
-
-        reviews: [
-            { forProductId: 10, reviewId: 10, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
-        ],
-        path: "elegant-pendant"
-    },
 
     {
         id: 10,
@@ -439,3 +414,5 @@ const products = [
         path: "decorative-horse"
     },
 ]
+
+export default products;

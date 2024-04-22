@@ -1,6 +1,5 @@
 import content from './content.js';
 const WhatWeDo = () => {
-    console.log(content)
     return <>
         <article className="max-w-[1250px] mx-auto pb-[7em]">
             <div className="mx-5 mb-[5em]">
