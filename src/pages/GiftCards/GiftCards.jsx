@@ -1,5 +1,5 @@
-import NavBar from "../../NavBar/NavBar";
-import Footer from "../../Footer/Footer";
+import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/Footer";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import cards from "./giftCardsData";

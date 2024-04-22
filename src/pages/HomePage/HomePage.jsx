@@ -1,8 +1,8 @@
-import NavBar from "../../NavBar/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import Carousel from "./Carousel/Carousel";
 import PopularItems from "./PopularItems/PopularItems";
 import WhatWeDo from "./WhatWeDo/WhatWeDo";
-import Footer from "../../Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 
 import { ChakraProvider } from "@chakra-ui/react";
 

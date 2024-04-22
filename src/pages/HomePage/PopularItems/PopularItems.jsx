@@ -4,16 +4,12 @@ import { useRef, useState } from 'react';
 
 import {
     Link,
-    Routes,
-    Route
 } from "react-router-dom";
 
 import { temporaryPopularItems } from './temporaryPopularItems';
 import PopularItemsModal from './PopularItemsModal';
 
 const PopularItems = () => {
-
-    const containerElementOfPopularItems = useRef([]);
 
     const [isQuickLookModalHidden, setIsQuickLookModalHidden] = useState(true);
 
@@ -58,7 +54,6 @@ const PopularItems = () => {
                             const { id, name, url, price, rating } = item;
 
                             const popularItem = useRef(null);
-                            containerElementOfPopularItems.current[id] = popularItem;
                             return <>
                                 <div
                                     ref={popularItem}
@@ -77,11 +72,6 @@ const PopularItems = () => {
                                             <img src={url} alt="" />
                                         </Link>
                                         <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
-                                            {/* <button onClick={() => setIsQuickLookModalHidden(false)}>
-                                                <div className='bg-black text-white px-4 py-[6px] text-[12px]'>
-                                                    <p className='font-bold'>QUICK LOOK</p>
-                                                </div>
-                                            </button> */}
                                             <Link to={`?productId=${id}`} onClick={() => setIsQuickLookModalHidden(false)}>
                                                 <div className='bg-black text-white px-4 py-[6px] text-[12px]'>
                                                     <p className='font-bold'>QUICK LOOK</p>

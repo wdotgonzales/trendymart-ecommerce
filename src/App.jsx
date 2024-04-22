@@ -12,7 +12,7 @@ import FAQ from './pages/FAQ/FAQ';
 function App() {
   return (
     <>
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <OurTeam /> */}
       {/* <OurServices /> */}
       {/* <PricingPlans /> */}
@@ -21,7 +21,7 @@ function App() {
       {/* <GiftCards /> */}
       {/* <TermsAndConditions /> */}
       {/* <ContactUs /> */}
-      <FAQ />
+      {/* <FAQ /> */}
     </>
   )
 }
