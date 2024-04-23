@@ -13,6 +13,8 @@ const Item = ({ products }) => {
 
     const [isQuickLookModalHidden, setIsQuickLookModalHidden] = useState(true);
 
+    const [currentItemChosenForModalId, setCurrentItemChosenForModalId] = useState();
+
     function hoverStateAddToCartPrice(child) {
         child[1].classList.remove('price');
         child[1].classList.remove('priceNormalState');
@@ -41,12 +43,15 @@ const Item = ({ products }) => {
         child.classList.remove('QuickLookFavoriteHoverState');
         child.classList.add('QuickLookFavoriteNormalState');
     }
+
+
     return <>
         {
             products.map((item) => {
                 const { id, name, productImgs, price, ratingAvg } = item;
 
                 const popularItem = useRef(null);
+
                 return <>
                     <div
                         ref={popularItem}
@@ -65,8 +70,13 @@ const Item = ({ products }) => {
                                 <img src={productImgs[0]} alt="" />
                             </Link>
                             <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
-                                <Link to={`?productId=${id}`} onClick={() => setIsQuickLookModalHidden(false)}>
-                                    <div className='bg-black text-white px-4 py-[6px] text-[12px]'>
+                                <Link onClick={() => {
+                                    setIsQuickLookModalHidden(false);
+                                    setCurrentItemChosenForModalId(id)
+                                }}
+                                >
+                                    <div
+                                        className='bg-black text-white px-4 py-[6px] text-[12px]'>
                                         <p className='font-bold'>QUICK LOOK</p>
                                     </div>
                                 </Link>
@@ -98,6 +108,8 @@ const Item = ({ products }) => {
                         isQuickLookModalHidden={isQuickLookModalHidden}
                         setIsQuickLookModalHidden={setIsQuickLookModalHidden}
                         products={products}
+                        currentItemChosenForModalId={currentItemChosenForModalId}
+                        setCurrentItemChosenForModalId={setCurrentItemChosenForModalId}
                     />
                 </>
             })

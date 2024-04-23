@@ -4,19 +4,17 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products }) => {
-    // get params
-    const urlParams = new URLSearchParams(window.location.search);
+const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products, currentItemChosenForModalId, setCurrentItemChosenForModalId }) => {
 
     // popular item
     const [popularItem, setPopularItem] = useState(null);
 
     useEffect(() => {
-        // get value of params
-        const param1Value = parseInt(urlParams.get('productId'));
-        // set popular items based on the id from params
-        setPopularItem(products.find((product) => param1Value === product.id));
-    }, [urlParams])
+        if (currentItemChosenForModalId !== undefined || null) {
+            // set popular items based on the id from params
+            setPopularItem(products.find((product) => currentItemChosenForModalId === product.id));
+        }
+    }, [currentItemChosenForModalId])
 
     // quantity to add  to cart
     const [quantity, setQuantity] = useState(1);
@@ -55,7 +53,11 @@ const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products
                         </div>
                         <div className="m-3">
                             <div className="inline-block relative left-[25em]">
-                                <Link to='/' onClick={() => setIsQuickLookModalHidden(true)}>
+                                <Link to='/' onClick={() => {
+                                    setIsQuickLookModalHidden(true);
+                                    setCurrentItemChosenForModalId(null)
+                                }}
+                                >
                                     <box-icon name='x' size='md' color='black'></box-icon>
                                 </Link>
                             </div>
