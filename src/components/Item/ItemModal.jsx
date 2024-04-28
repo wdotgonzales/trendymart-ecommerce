@@ -88,7 +88,7 @@ const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products
                                     </div>
 
                                     <Link to='/'>
-                                        <div className='bg-black text-white text-center tracking-wider p-[12.9px] text-[12px]'>
+                                        <div onClick={() => alert(popularItem.id)} className='bg-black text-white text-center tracking-wider p-[12.9px] text-[12px]'>
                                             ADD TO CART
                                         </div>
                                     </Link>

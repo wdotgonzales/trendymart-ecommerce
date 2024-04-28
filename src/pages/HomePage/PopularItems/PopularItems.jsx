@@ -12,9 +12,11 @@ const PopularItems = () => {
                 <p className='font-bold text-[30px] tracking-wider text-1 mt-[3em] mb-[1.5em] text-center'>POPULAR ITEMS.</p>
 
                 <div className='mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10'>
-                    <Item
-                        products={filteredProducts}
-                    />
+                    {
+                        filteredProducts.map((product, index) => (
+                            <Item key={index} products={product} />
+                        ))
+                    }
                 </div>
                 <Link to="/">
                     <div className="text-center sm:text-left mt-[3em]">

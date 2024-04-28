@@ -341,9 +341,9 @@ const products = [
                       eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes 
                       nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.`,
         productImgs: [
+            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-3-gallery-2.jpg',
             'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h3-product-6a.jpg',
             'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-3-gallery-1.jpg',
-            'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-3-gallery-2.jpg',
             'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-3-gallery-5.jpg',
             'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-3-gallery-6.jpg'
         ],

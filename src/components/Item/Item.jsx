@@ -44,76 +44,71 @@ const Item = ({ products }) => {
         child.classList.add('QuickLookFavoriteNormalState');
     }
 
+    const { id, name, productImgs, price, ratingAvg } = products;
+
+    const popularItem = useRef(null);
 
     return <>
-        {
-            products.map((item) => {
-                const { id, name, productImgs, price, ratingAvg } = item;
 
-                const popularItem = useRef(null);
-
-                return <>
-                    <div
-                        ref={popularItem}
-                        key={id}
-                        onMouseEnter={() => {
-                            hoverStateAddToCartPrice(popularItem.current.children[3].children)
-                            hoverStateQuickLookFavorite(popularItem.current.children[0].children[1])
-                        }}
-                        onMouseLeave={() => {
-                            normalStateAddToCartPrice(popularItem.current.children[3].children)
-                            normalStateQuickLookFavorite(popularItem.current.children[0].children[1])
-                        }}
+        <div
+            ref={popularItem}
+            key={id}
+            onMouseEnter={() => {
+                hoverStateAddToCartPrice(popularItem.current.children[3].children)
+                hoverStateQuickLookFavorite(popularItem.current.children[0].children[1])
+            }}
+            onMouseLeave={() => {
+                normalStateAddToCartPrice(popularItem.current.children[3].children)
+                normalStateQuickLookFavorite(popularItem.current.children[0].children[1])
+            }}
+        >
+            <div className='relative overflow-hidden h-auto'>
+                <Link to="/">
+                    <img src={productImgs[0]} alt="" />
+                </Link>
+                <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
+                    <Link onClick={() => {
+                        setIsQuickLookModalHidden(false);
+                        setCurrentItemChosenForModalId(id)
+                    }}
                     >
-                        <div className='relative overflow-hidden h-auto'>
-                            <Link to="/">
-                                <img src={productImgs[0]} alt="" />
-                            </Link>
-                            <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
-                                <Link onClick={() => {
-                                    setIsQuickLookModalHidden(false);
-                                    setCurrentItemChosenForModalId(id)
-                                }}
-                                >
-                                    <div
-                                        className='bg-black text-white px-4 py-[6px] text-[12px]'>
-                                        <p className='font-bold'>QUICK LOOK</p>
-                                    </div>
-                                </Link>
-                                <button onClick={() => alert('<3')}>
-                                    <div className='bg-gray-500 py-[1px] px-2'>
-                                        <div className='mt-1'>
-                                            <box-icon name='heart' type='solid' color='#ffffff' size="xs"></box-icon>
-                                        </div>
-                                    </div>
-                                </button>
+                        <div
+                            className='bg-black text-white px-4 py-[6px] text-[12px]'>
+                            <p className='font-bold'>QUICK LOOK</p>
+                        </div>
+                    </Link>
+                    <button onClick={() => alert('<3')}>
+                        <div className='bg-gray-500 py-[1px] px-2'>
+                            <div className='mt-1'>
+                                <box-icon name='heart' type='solid' color='#ffffff' size="xs"></box-icon>
                             </div>
                         </div>
+                    </button>
+                </div>
+            </div>
 
-                        <Link to="/"><p className='text-center font-bold mt-3'>{name}</p></Link>
-                        <div className='text-center'>
-                            <Rating name="half-rating-read" defaultValue={ratingAvg} precision={0.5} readOnly />
-                        </div>
+            <Link to="/"><p className='text-center font-bold mt-3'>{name}</p></Link>
+            <div className='text-center'>
+                <Rating name="half-rating-read" defaultValue={ratingAvg} precision={0.5} readOnly />
+            </div>
 
-                        <div className='relative w-full'>
-                            <button className={`text-center absolute addToCart text-[#979797] tracking-wider font-bold`}>
-                                <p>ADD TO CART</p>
-                            </button>
+            <div className='relative w-full'>
+                <button className={`text-center absolute addToCart text-[#979797] tracking-wider font-bold`}>
+                    <p>ADD TO CART</p>
+                </button>
 
-                            <p className={`mb-2 text-[#979797] absolute price`}>${price}</p>
-                        </div>
-                    </div >
+                <p className={`mb-2 text-[#979797] absolute price`}>${price}</p>
+            </div>
+        </div >
 
-                    <ItemModal
-                        isQuickLookModalHidden={isQuickLookModalHidden}
-                        setIsQuickLookModalHidden={setIsQuickLookModalHidden}
-                        products={products}
-                        currentItemChosenForModalId={currentItemChosenForModalId}
-                        setCurrentItemChosenForModalId={setCurrentItemChosenForModalId}
-                    />
-                </>
-            })
-        }
+        <ItemModal
+            isQuickLookModalHidden={isQuickLookModalHidden}
+            setIsQuickLookModalHidden={setIsQuickLookModalHidden}
+            products={[products]}
+            currentItemChosenForModalId={currentItemChosenForModalId}
+            setCurrentItemChosenForModalId={setCurrentItemChosenForModalId}
+        />
+
     </>
 }
 

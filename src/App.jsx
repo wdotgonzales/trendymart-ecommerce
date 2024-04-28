@@ -9,10 +9,11 @@ import GiftCards from './pages/GiftCards/GiftCards';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import ContactUs from './pages/ContactUs/ContactUs';
 import FAQ from './pages/FAQ/FAQ';
+import Shop from './pages/Shop/Shop';
 function App() {
   return (
     <>
-      <HomePage />
+      {/* <HomePage /> */}
       {/* <OurTeam /> */}
       {/* <OurServices /> */}
       {/* <PricingPlans /> */}
@@ -22,6 +23,7 @@ function App() {
       {/* <TermsAndConditions /> */}
       {/* <ContactUs /> */}
       {/* <FAQ /> */}
+      <Shop />
     </>
   )
 }
