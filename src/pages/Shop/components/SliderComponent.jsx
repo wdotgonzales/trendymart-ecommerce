@@ -15,7 +15,7 @@ const SliderComponent = ({ sliderValue, setSliderValue }) => {
 
     return <>
         <ChakraProvider>
-            <p className='font-bold text-center mb-1 mt-[2.3em]'>PRICE FILTER </p>
+            <p className='font-bold mb-1 mt-[2.7em]'>PRICE FILTER </p>
             <Slider aria-label='slider-ex-1'
                 value={sliderValue}
                 min={24} max={460} step={1}

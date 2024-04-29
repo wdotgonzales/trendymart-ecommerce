@@ -26,17 +26,6 @@ const Pagination = ({ data, itemsPerPage }) => {
 
     return (
         <div className="">
-            <div className='w-[265px]'>
-                <div className='border-2 border-grey-500 my-4'>
-                    <select id="underline_select" className="block px-3 py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option selected>Choose a country</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
-                    </select>
-                </div>
-            </div>
             {firstTenItems.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10">
                     {paginatedItems.map((item, index) => (

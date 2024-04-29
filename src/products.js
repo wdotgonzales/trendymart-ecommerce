@@ -145,7 +145,7 @@ const products = [
         id: 6,
         name: "WALL CLOCK",
         price: 110,
-        ratingAvg: 4.0,
+        ratingAvg: 5.0,
         description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, 
                       eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes 
                       nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.`,
@@ -383,6 +383,7 @@ const products = [
 
         reviews: [
             { forProductId: 14, reviewId: 14, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
+            { forProductId: 14, reviewId: 15, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
         ],
         path: "clew"
     },
@@ -410,6 +411,8 @@ const products = [
 
         reviews: [
             { forProductId: 15, reviewId: 15, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
+            { forProductId: 15, reviewId: 16, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
+            { forProductId: 15, reviewId: 17, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
         ],
         path: "decorative-horse"
     },
