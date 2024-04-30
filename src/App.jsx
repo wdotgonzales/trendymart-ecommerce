@@ -10,6 +10,7 @@ import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import ContactUs from './pages/ContactUs/ContactUs';
 import FAQ from './pages/FAQ/FAQ';
 import Shop from './pages/Shop/Shop';
+import WishList from './pages/Wishlist/Wishlist';
 function App() {
   return (
     <>
@@ -23,7 +24,8 @@ function App() {
       {/* <TermsAndConditions /> */}
       {/* <ContactUs /> */}
       {/* <FAQ /> */}
-      <Shop />
+      {/* <Shop /> */}
+      <WishList />
     </>
   )
 }
