@@ -10,6 +10,7 @@ const Pagination = ({ data, itemsPerPage }) => {
     useEffect(() => {
         const numPages = Math.ceil(data.length / itemsPerPage);
         setTotalPages(numPages);
+        setCurrentPage(1);
     }, [data, itemsPerPage]);
 
     const handlePageChange = (pageNumber) => {
