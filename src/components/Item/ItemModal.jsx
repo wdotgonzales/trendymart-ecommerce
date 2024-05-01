@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products, currentItemChosenForModalId, setCurrentItemChosenForModalId }) => {
+const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products, currentItemChosenForModalId, setCurrentItemChosenForModalId, exitModalRoute }) => {
 
     // popular item
     const [popularItem, setPopularItem] = useState(null);
@@ -53,7 +53,7 @@ const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products
                         </div>
                         <div className="m-3">
                             <div className="inline-block absolute right-1">
-                                <Link to='/' onClick={() => {
+                                <Link to={exitModalRoute} onClick={() => {
                                     setIsQuickLookModalHidden(true);
                                     setCurrentItemChosenForModalId(null)
                                 }}

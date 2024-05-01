@@ -9,7 +9,7 @@ import {
 
 import ItemModal from './ItemModal';
 
-const Item = ({ products }) => {
+const Item = ({ products, exitModalRoute }) => {
 
     const [isQuickLookModalHidden, setIsQuickLookModalHidden] = useState(true);
 
@@ -107,6 +107,7 @@ const Item = ({ products }) => {
             products={[products]}
             currentItemChosenForModalId={currentItemChosenForModalId}
             setCurrentItemChosenForModalId={setCurrentItemChosenForModalId}
+            exitModalRoute={exitModalRoute}
         />
 
     </>

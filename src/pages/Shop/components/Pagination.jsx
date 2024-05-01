@@ -30,7 +30,7 @@ const Pagination = ({ data, itemsPerPage }) => {
             {firstTenItems.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10">
                     {paginatedItems.map((item, index) => (
-                        <Item key={index} products={item} />
+                        <Item key={index} products={item} exitModalRoute={"/shop"}/>
                     ))}
                 </div>
             )}

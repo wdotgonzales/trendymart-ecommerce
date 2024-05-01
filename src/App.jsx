@@ -11,6 +11,10 @@ import ContactUs from './pages/ContactUs/ContactUs';
 import FAQ from './pages/FAQ/FAQ';
 import Shop from './pages/Shop/Shop';
 import WishList from './pages/Wishlist/Wishlist';
+
+import ShopSelectedProduct from './components/ShopSelectedProduct/ShopSelectedProduct';
+
+import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <>
@@ -25,7 +29,15 @@ function App() {
       {/* <ContactUs /> */}
       {/* <FAQ /> */}
       {/* <Shop /> */}
-      <WishList />
+      {/* <WishList /> */}
+
+      <Routes>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/shop'>
+          <Route index element={<Shop />} />
+          <Route path=':id' element={<ShopSelectedProduct />} />
+        </Route>
+      </Routes>
     </>
   )
 }
