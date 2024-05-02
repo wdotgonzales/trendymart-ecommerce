@@ -404,7 +404,7 @@ const products = [
             'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-19-gallery-4.jpg'
         ],
 
-        color: ["Black"],
+        color: ["Black","White"],
         material: ["Wood"],
         weight: "2 kg",
         dimensions: "10 x 10 x 15 cm",

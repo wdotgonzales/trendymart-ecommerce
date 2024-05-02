@@ -10,9 +10,10 @@ import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import ContactUs from './pages/ContactUs/ContactUs';
 import FAQ from './pages/FAQ/FAQ';
 import Shop from './pages/Shop/Shop';
-import WishList from './pages/Wishlist/Wishlist';
-
+import WishList from './pages/Wishlist/WishList';
 import ShopSelectedProduct from './components/ShopSelectedProduct/ShopSelectedProduct';
+
+import products from './products';
 
 import { Route, Routes } from 'react-router-dom';
 function App() {
@@ -32,10 +33,17 @@ function App() {
       {/* <WishList /> */}
 
       <Routes>
-        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/' element={<HomePage />} />
         <Route path='/shop'>
           <Route index element={<Shop />} />
-          <Route path=':id' element={<ShopSelectedProduct />} />
+          {
+            products.map((product) => {
+              return <>
+                <Route path={`${product.path}`} element={<ShopSelectedProduct />} />
+              </>
+            })
+          }
+          <Route path='*' element={<p>product not found</p>} />
         </Route>
       </Routes>
     </>

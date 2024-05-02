@@ -44,7 +44,7 @@ const Item = ({ products, exitModalRoute }) => {
         child.classList.add('QuickLookFavoriteNormalState');
     }
 
-    const { id, name, productImgs, price, ratingAvg } = products;
+    const { id, name, productImgs, price, ratingAvg, path } = products;
 
     const popularItem = useRef(null);
 
@@ -63,7 +63,7 @@ const Item = ({ products, exitModalRoute }) => {
             }}
         >
             <div className='relative overflow-hidden h-auto'>
-                <Link to="/">
+                <Link to={`/shop/${path}`}>
                     <img src={productImgs[0]} alt="" />
                 </Link>
                 <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
