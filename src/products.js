@@ -410,9 +410,9 @@ const products = [
         dimensions: "10 x 10 x 15 cm",
 
         reviews: [
-            { forProductId: 15, reviewId: 15, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
-            { forProductId: 15, reviewId: 16, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
-            { forProductId: 15, reviewId: 17, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
+            { forProductId: 15, reviewId: 15, rating: 5.0, reviewerName: "Mark Jackson 1", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
+            { forProductId: 15, reviewId: 16, rating: 5.0, reviewerName: "Mark Jackson 2", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
+            { forProductId: 15, reviewId: 17, rating: 5.0, reviewerName: "Mark Jackson 3", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
         ],
         path: "decorative-horse"
     },

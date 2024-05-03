@@ -4,8 +4,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "../Footer/Footer";
 import { Rating } from "@mui/material";
 import { useState } from "react";
-
 import { Link } from "react-router-dom";
+import { Textarea, Input } from "@chakra-ui/react";
+
+import ShopSelectedProductModal from "./components/ShopSelectedProductModal";
 const ShopSelectedProduct = () => {
     const path = window.location.pathname;
     const segments = path.split('/');
@@ -13,7 +15,6 @@ const ShopSelectedProduct = () => {
     const lastSegment = segments[segments.length - 1];
 
     const selectedProductObject = products.find((product) => product.path === lastSegment);
-    console.log(selectedProductObject);
 
     const removeFirstImageArr = selectedProductObject.productImgs.slice(1);
 
@@ -23,6 +24,16 @@ const ShopSelectedProduct = () => {
         description: true,
         additionalInformation: false,
         reviews: false
+    });
+
+    const [isModalHidden, setIsModalHidden] = useState(true);
+    const [currentImageForDisplayInModal, setCurrentImageForDisplayInModal] = useState();
+
+    const [reviewInputs, setReviewInputs] = useState({
+        rating: null,
+        review: "",
+        name: "",
+        email: ""
     });
 
 
@@ -39,17 +50,32 @@ const ShopSelectedProduct = () => {
                             <div className="flex gap-2">
                                 <div className="grid grid-cols-1 gap-y-2">
                                     {
-                                        removeFirstImageArr.map((img) => {
+                                        removeFirstImageArr.map((img, index) => {
                                             return <>
                                                 <div>
-                                                    <img className="w-[129px] md:w-[100px]" src={img} alt="" />
+                                                    <img
+                                                        className="w-[129px] md:w-[100px] cursor-pointer"
+                                                        src={img}
+                                                        alt=""
+                                                        onClick={() => {
+                                                            setCurrentImageForDisplayInModal(index + 1);
+                                                            setIsModalHidden(false);
+                                                        }} />
                                                 </div>
                                             </>
                                         })
                                     }
                                 </div>
                                 <div >
-                                    <img className="w-[565px] sm:w-[550px] md:w-[430px]" src={selectedProductObject.productImgs[0]} alt="" />
+                                    <img
+                                        className="w-[565px] sm:w-[550px] md:w-[430px] cursor-pointer"
+                                        src={selectedProductObject.productImgs[0]}
+                                        alt=""
+                                        onClick={() => {
+                                            setCurrentImageForDisplayInModal(0);
+                                            setIsModalHidden(false);
+                                        }}
+                                    />
                                 </div>
                             </div>
                             {/* child 2 */}
@@ -73,7 +99,7 @@ const ShopSelectedProduct = () => {
                                         <p className="text-[#979797] text-[0.8em]">{selectedProductObject.description}</p>
                                     </div>
 
-                                    <div className='mt-8 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-[290px] sm:max-w-[350px]'>
+                                    <div className='mt-8 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-[100%] sm:max-w-[350px]'>
 
                                         <div className="w-full">
                                             <p className='text-[12px] text-[#979797]'>Quantity:</p>
@@ -113,13 +139,13 @@ const ShopSelectedProduct = () => {
                             <div className="grid grid-cols-1 md:flex">
                                 <div
                                     onClick={() => setContentToggle({ ...contentToggle, description: true, additionalInformation: false, reviews: false })}
-                                    className={`text-[0.8em] font-bold border-2 border-white py-5 text-center md:text-left md:px-[3em] cursor-pointer ${contentToggle.description && 'bg-black text-white border-black'}`}>DESCRIPTION</div>
+                                    className={`text-[0.8em] font-bold border border-t border-b border-l border-[#979797] py-5 text-center md:text-left md:px-[3em] cursor-pointer ${contentToggle.description && 'bg-black text-white border-black'}`}>DESCRIPTION</div>
                                 <div
                                     onClick={() => setContentToggle({ ...contentToggle, description: false, additionalInformation: true, reviews: false })}
-                                    className={`text-[0.8em] font-bold border-2 border-white py-5 text-center md:text-left md:px-[3em] cursor-pointer ${contentToggle.additionalInformation && 'bg-black text-white border-black'}`}>ADDITIONAL INFORMATION</div>
+                                    className={`text-[0.8em] font-bold border border-t border-b border-l border-[#979797] py-5 text-center md:text-left md:px-[3em] cursor-pointer ${contentToggle.additionalInformation && 'bg-black text-white border-black'}`}>ADDITIONAL INFORMATION</div>
                                 <div
                                     onClick={() => setContentToggle({ ...contentToggle, description: false, additionalInformation: false, reviews: true })}
-                                    className={`text-[0.8em] font-bold border-2 border-white py-5 text-center md:text-left md:px-[3em] cursor-pointer ${contentToggle.reviews && 'bg-black text-white border-black'}`}>REVIEWS ({selectedProductObject.reviews.length})</div>
+                                    className={`text-[0.8em] font-bold border border-t border-b border-l border-[#979797] py-5 text-center md:text-left md:px-[3em] cursor-pointer ${contentToggle.reviews && 'bg-black text-white border-black'}`}>REVIEWS ({selectedProductObject.reviews.length})</div>
                             </div>
                         </div>
                     </div>
@@ -171,12 +197,115 @@ const ShopSelectedProduct = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <div className={`${!contentToggle.reviews && 'hidden'}`}>
+                            <p className="font-bold text-[1.3em] tracking-wider mb-3">{selectedProductObject.reviews.length} REVIEW FOR {selectedProductObject.name}</p>
+                            {
+                                selectedProductObject.reviews.map((review) => {
+                                    const {
+                                        dateOfReview,
+                                        description,
+                                        rating,
+                                        reviewId,
+                                        reviewImg,
+                                        reviewerName
+                                    } = review
+                                    return <div key={reviewId} className="flex gap-3 mb-[1.5em] mt-5">
+                                        <div className="">
+                                            <img src={reviewImg} alt="" className="w-[70px]" />
+                                        </div>
+                                        <div>
+                                            <Rating
+                                                key={reviewId}
+                                                name="half-rating-read"
+                                                defaultValue={rating != null ? rating : 0}
+                                                precision={0.5}
+                                                size="small"
+                                                readOnly
+                                            />
+                                            <div className="ml-1">
+                                                <div className="flex gap-2 text-[#979797]">
+                                                    <p className="font-bold">{reviewerName}</p>
+                                                    <p>-</p>
+                                                    <p>{dateOfReview}</p>
+                                                </div>
+                                                <p className="text-[#979797]">{description}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                })
+                            }
+
+                            <div className="mt-[4em]">
+                                <p className="font-bold tracking-wider">ADD A REVIEW</p>
+                                <p className="mt-4 text-[#979797]">Your email address will not be published. Required fields are marked*</p>
+
+                                <div className="my-4">
+                                    <p className="mb-2">Your Rating*</p>
+                                    <Rating
+                                        name="half-rating-read"
+                                        defaultValue={reviewInputs.rating}
+                                        precision={0.5}
+                                        size="small"
+                                        onChange={(e) => setReviewInputs({ ...reviewInputs, rating: e.target.value })}
+                                    />
+                                </div>
+
+                                <div>
+                                    <div className="max-w-[100%] md:max-w-[50%] mb-4">
+                                        <p className="mb-2">Your Review * </p>
+                                        <Textarea
+                                            width="100%"
+                                            padding="1em"
+                                            height="220px"
+                                            value={reviewInputs.review}
+                                            onChange={(e) => setReviewInputs({ ...reviewInputs, review: e.target.value })}
+                                        />
+                                    </div>
+
+                                    <div className="max-w-[100%] md:max-w-[50%] mb-4">
+                                        <p className="mb-2">Name * </p>
+                                        <Input
+                                            width="100%"
+                                            border="1px solid black"
+                                            padding="1em"
+                                            type="text"
+                                            value={reviewInputs.name}
+                                            onChange={(e) => setReviewInputs({ ...reviewInputs, name: e.target.value })}
+                                        />
+                                    </div>
+
+                                    <div className="max-w-[100%] md:max-w-[50%] mb-4">
+                                        <p className="mb-2">Email * </p>
+                                        <Input
+                                            width="100%"
+                                            border="1px solid black"
+                                            padding="1em"
+                                            type="email"
+                                        />
+                                    </div>
+
+                                    <button
+                                        className="bg-black text-white w-[150px] py-[0.8em] font-bold text-[0.9em] mt-[1em]"
+                                    >SUBMIT</button>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
+            <hr className="my-[2.5em]" style={{ border: "1px solid #979797" }} />
         </section >
         <Footer />
+
+        <ShopSelectedProductModal
+            isModalHidden={isModalHidden}
+            setIsModalHidden={setIsModalHidden}
+            currentImageForDisplayInModal={currentImageForDisplayInModal}
+            selectedProductObject={selectedProductObject}
+        />
     </>
 }
 
