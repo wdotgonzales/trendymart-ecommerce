@@ -31,7 +31,7 @@ const ShopSelectedProduct = () => {
             <NavBar />
         </ChakraProvider>
         <section className="">
-            <div className="bg-gray-200">
+            <div className="">
                 <div className="max-w-[1243px] m-auto">
                     <div className="mx-5 pt-[5em]">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2em] items-start pb-[5em]">
