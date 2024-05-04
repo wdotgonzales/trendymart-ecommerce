@@ -36,6 +36,39 @@ const ShopSelectedProduct = () => {
         email: ""
     });
 
+    const [errorHandlers, setErrorHandlers] = useState({
+        ratingNullError: false,
+        reviewNullError: false,
+        nameNullError: false,
+        emailNullError: false,
+        emailSyntaxError: false
+    })
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for email validation
+        return emailRegex.test(email);
+    }
+
+    const handleSubmit = () => {
+        const newErrorHandlers = {
+            ratingNullError: reviewInputs.rating === null,
+            reviewNullError: reviewInputs.review === "",
+            nameNullError: reviewInputs.name === "",
+            emailNullError: reviewInputs.email === "",
+            emailSyntaxError: !isValidEmail(reviewInputs.email)
+        };
+
+        setErrorHandlers(newErrorHandlers);
+
+        // Success
+        if (!newErrorHandlers.ratingNullError
+            && !newErrorHandlers.reviewNullError
+            && !newErrorHandlers.nameNullError
+            && !newErrorHandlers.emailNullError
+            && !newErrorHandlers.emailSyntaxError) {
+            alert('Success')
+        }
+    };
 
     return <>
         <ChakraProvider>
@@ -249,6 +282,10 @@ const ShopSelectedProduct = () => {
                                         size="small"
                                         onChange={(e) => setReviewInputs({ ...reviewInputs, rating: e.target.value })}
                                     />
+                                    {errorHandlers.ratingNullError
+                                        &&
+                                        <p className="text-red-700 text-[0.9em]">Please enter a start rating.</p>
+                                    }
                                 </div>
 
                                 <div>
@@ -261,6 +298,10 @@ const ShopSelectedProduct = () => {
                                             value={reviewInputs.review}
                                             onChange={(e) => setReviewInputs({ ...reviewInputs, review: e.target.value })}
                                         />
+                                        {errorHandlers.reviewNullError
+                                            &&
+                                            <p className="text-red-700 text-[0.9em]">Please give a review.</p>
+                                        }
                                     </div>
 
                                     <div className="max-w-[100%] md:max-w-[50%] mb-4">
@@ -273,6 +314,10 @@ const ShopSelectedProduct = () => {
                                             value={reviewInputs.name}
                                             onChange={(e) => setReviewInputs({ ...reviewInputs, name: e.target.value })}
                                         />
+                                        {errorHandlers.nameNullError
+                                            &&
+                                            <p className="text-red-700 text-[0.9em]">Please enter your name.</p>
+                                        }
                                     </div>
 
                                     <div className="max-w-[100%] md:max-w-[50%] mb-4">
@@ -282,10 +327,22 @@ const ShopSelectedProduct = () => {
                                             border="1px solid black"
                                             padding="1em"
                                             type="email"
+                                            value={reviewInputs.email}
+                                            onChange={(e) => setReviewInputs({ ...reviewInputs, email: e.target.value })}
                                         />
+                                        {errorHandlers.emailNullError
+                                            &&
+                                            <p className="text-red-700 text-[0.9em]">Please enter your email.</p>
+                                        }
+
+                                        {errorHandlers.emailNullError === false && errorHandlers.emailSyntaxError
+                                            &&
+                                            <p className="text-red-700 text-[0.9em]">Please enter a correct email.</p>
+                                        }
                                     </div>
 
                                     <button
+                                        onClick={handleSubmit}
                                         className="bg-black text-white w-[150px] py-[0.8em] font-bold text-[0.9em] mt-[1em]"
                                     >SUBMIT</button>
 
