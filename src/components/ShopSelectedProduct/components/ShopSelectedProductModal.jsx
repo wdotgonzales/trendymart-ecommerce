@@ -27,7 +27,7 @@ const ShopSelectedProductModal = ({ isModalHidden, setIsModalHidden, currentImag
             <div className="flex justify-center items-center h-screen mx-6">
                 <div className="max-w-[620px]">
                     {/* Content */}
-                    <img src={chosenImageToDiplay} alt="" />
+                    <img src={chosenImageToDiplay} alt=""  className="w-[500px]"/>
                     <div className="flex justify-between mx-2 my-2">
                         <div className="flex">
                             <div
