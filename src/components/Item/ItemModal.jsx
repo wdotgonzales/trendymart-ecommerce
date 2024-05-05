@@ -35,7 +35,7 @@ const ItemModal = ({ isQuickLookModalHidden, setIsQuickLookModalHidden, products
         <div
             className={`absolute left-0 top-[0px] w-full h-full z-20 ${isQuickLookModalHidden && 'hidden'}`}
             style={{
-                backgroundColor: 'rgba(0, 0, 0, 100)'
+                backgroundColor: 'rgba(0, 0, 0, 0.6)'
             }}>
 
             <div className="flex justify-center items-center h-screen mx-6">
