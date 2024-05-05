@@ -1,4 +1,3 @@
-import products from "../../products";
 import NavBar from "../NavBar/NavBar";
 import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "../Footer/Footer";
@@ -6,6 +5,10 @@ import { Rating } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Textarea, Input } from "@chakra-ui/react";
+
+import products from "../../products";
+import Item from "../Item/Item";
+import ItemModal from "../Item/ItemModal";
 
 import ShopSelectedProductModal from "./components/ShopSelectedProductModal";
 const ShopSelectedProduct = () => {
@@ -28,6 +31,10 @@ const ShopSelectedProduct = () => {
 
     const [isModalHidden, setIsModalHidden] = useState(true);
     const [currentImageForDisplayInModal, setCurrentImageForDisplayInModal] = useState();
+
+    // Top 4 Popular Items
+    const filteredProducts = products.sort((a, b) => (b.reviews?.length || 0) - (a.reviews?.length || 0)).slice(0, 4);
+
 
     const [reviewInputs, setReviewInputs] = useState({
         rating: null,
@@ -354,6 +361,20 @@ const ShopSelectedProduct = () => {
                 </div>
             </div>
             <hr className="my-[2.5em]" style={{ border: "1px solid #979797" }} />
+
+            <div className="max-w-[1243px] m-auto">
+                <div className="mx-4 pt-[3em] pb-[7em]">
+                    <p className="mb-4 font-bold tracking-wider text-[1.2em] text-center md:text-left">POPULAR PRODUCTS</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1.5em]">
+                        {
+                            filteredProducts.map((product, index) => {
+                                return <Item key={index} products={product} exitModalRoute={path} />
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+
         </section >
         <Footer />
 

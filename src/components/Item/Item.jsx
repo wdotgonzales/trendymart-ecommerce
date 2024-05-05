@@ -63,9 +63,9 @@ const Item = ({ products, exitModalRoute }) => {
             }}
         >
             <div className='relative overflow-hidden h-auto'>
-                <Link to={`/shop/${path}`}>
+                <a href={`/shop/${path}`}>
                     <img src={productImgs[0]} alt="" />
-                </Link>
+                </a>
                 <div className='absolute QuickLookFavorite left-1/2 transform -translate-x-1/2 flex items-center'>
                     <Link onClick={() => {
                         setIsQuickLookModalHidden(false);
