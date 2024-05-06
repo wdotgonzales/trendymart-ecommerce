@@ -12,6 +12,7 @@ import FAQ from './pages/FAQ/FAQ';
 import Shop from './pages/Shop/Shop';
 import WishList from './pages/Wishlist/WishList';
 import ShopSelectedProduct from './components/ShopSelectedProduct/ShopSelectedProduct';
+import Cart from './pages/Cart/Cart';
 
 import products from './products';
 
@@ -45,6 +46,8 @@ function App() {
           }
           <Route path='*' element={<p>product not found</p>} />
         </Route>
+        <Route path='/cart' element={<Cart />} />
+        <Route path='*' element={<p>page not found</p>} />
       </Routes>
     </>
   )
