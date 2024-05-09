@@ -1,7 +1,7 @@
 import './Item.css';
 
 import Rating from '@mui/material/Rating';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import {
     Link,
@@ -12,6 +12,16 @@ import ItemModal from './ItemModal';
 const Item = ({ products, exitModalRoute }) => {
 
     const [isQuickLookModalHidden, setIsQuickLookModalHidden] = useState(true);
+    
+    useEffect(() => {
+        if (isQuickLookModalHidden) {
+            document.body.classList.remove('overflow-hidden')
+        } else[
+            document.body.classList.add('overflow-hidden')
+        ]
+
+    }, [isQuickLookModalHidden])
+
 
     const [currentItemChosenForModalId, setCurrentItemChosenForModalId] = useState();
 
