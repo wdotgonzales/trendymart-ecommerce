@@ -6,34 +6,57 @@ import './styles/Cart.css'
 
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 
+import useFetchCountries from "./hooks/useFetchCountries";
+import { useState, useEffect } from "react";
+
+import { Select, Input, Button } from '@chakra-ui/react'
+
 const Cart = () => {
+    const [currentCountrySelected, setCurrentCountrySelected] = useState('');
+
+    const [currentCountryCode, setCurrentCountryCode] = useState(null);
+
+    const [states, setStates] = useState(null);
+    const [currentStateChosen, setCurrentStateChosen] = useState('');
+
+    const [city, setCity] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+
+
+    const GET_COUNTRY_URL = 'https://api.countrystatecity.in/v1/countries';
+    const GET_STATE_URL = `https://api.countrystatecity.in/v1/countries/${currentCountryCode}/states`
+    const API_KEY = 'd2RrT1ZkTHBPSGtDMWhPSUlPbEVrdnhzZHJibVU2T1pkdTh4NHc0dg==';
+
+    // Country
+    const { data: countryData } = useFetchCountries(GET_COUNTRY_URL, API_KEY);
+    // State
+    const { data: stateData } = useFetchCountries(GET_STATE_URL, API_KEY);
+
+    useEffect(() => {
+        if (currentCountrySelected !== '') {
+            const { iso2: countryCode } = countryData.find((country) => country.name === currentCountrySelected);
+            setCurrentCountryCode(countryCode);
+        }
+    }, [currentCountrySelected]);
+
+    useEffect(() => {
+        if (currentCountryCode !== null && stateData?.length > 0) {
+            setStates(stateData);
+        }
+    }, [currentCountryCode, stateData]);
+
+    useEffect(() => {
+        if (currentCountrySelected === '' || currentStateChosen === '') {
+            setCity('');
+            setPostalCode('');
+        }
+    }, [currentCountrySelected, currentStateChosen])
+
+
+    const [isDropdownContentHidden, setIsDropdownContentHidden] = useState(true);
+
+
     const temporaryCart = [
-        {
-            id: 5,
-            name: "NEWSPAPER STORAGE",
-            price: 90,
-            ratingAvg: 4.0,
-            description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, 
-                          eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes 
-                          nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.`,
-            productImgs: [
-                'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/h1-product-4.jpg',
-                'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-4-gallery-1.jpg',
-                'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-4-gallery-2.jpg',
-                'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-4-gallery-3.jpg',
-                'https://depot.qodeinteractive.com/wp-content/uploads/2017/01/product-4-gallery-4.jpg'
-            ],
-
-            color: ["Beige", "White"],
-            material: ["Wood"],
-            weight: "2 kg",
-            dimensions: "10 x 10 x 15 cm",
-
-            reviews: [
-                { forProductId: 5, reviewId: 5, rating: 5.0, reviewerName: "Mark Jackson", reviewImg: "https://freesvg.org/img/abstract-user-flat-4.png", description: "asd", dateOfReview: "01/23/2024" },
-            ],
-            path: "newspaper-storage"
-        },
         {
             id: 5,
             name: "NEWSPAPER STORAGE",
@@ -154,7 +177,7 @@ const Cart = () => {
                                                 <p className="font-bold">SUBTOTAL</p>
                                                 <p>$123</p>
                                             </div>
-                                            <div className="flex gap-[2.5em] mt-[1.5em]">
+                                            <div className="block sm:flex gap-[2.5em] mt-[1.5em]">
                                                 <p className="font-bold">SHIPPING</p>
 
                                                 <div className=" w-full md:w-3/5 lg:w-full">
@@ -169,18 +192,75 @@ const Cart = () => {
                                                     </ChakraProvider>
                                                     <p className="my-5">Shipping to <span className="font-bold">Peru</span></p>
 
-                                                    <div className="font-bold flex gap-2 items-center cursor-pointer">
+                                                    <div onClick={() => setIsDropdownContentHidden(!isDropdownContentHidden)} className="font-bold flex gap-2 items-center cursor-pointer">
                                                         <p>CHANGE ADDRESS</p>
                                                         <div className="">
                                                             <box-icon type='solid' name='down-arrow' size='xs'></box-icon>
                                                         </div>
                                                     </div>
 
-                                                    <div className="border-2 border-red-500 mt-2">
-                                                        a
-                                                    </div>
+                                                    <div className={`mt-2 ${isDropdownContentHidden && 'hidden'}`}>
+                                                        <ChakraProvider>
+                                                            <div>
+                                                                {
+                                                                    countryData === null
+                                                                        ? <Select placeholder='Select a Country' disabled={true} style={{ border: "1px solid black" }}></Select>
+                                                                        : <Select placeholder='Select a Country' disabled={false} onChange={(e) => setCurrentCountrySelected(e.target.value)} style={{ border: "1px solid black" }}>
+                                                                            {
+                                                                                countryData.map((country) => {
+                                                                                    const { id, name } = country;
+                                                                                    return <option key={id} value={name}>{name}</option>
+                                                                                })
+                                                                            }
+                                                                        </Select>
+                                                                }
+                                                            </div>
 
+                                                            <div className="mt-3">
+                                                                {
+                                                                    currentCountrySelected === ''
+                                                                        ? <Select placeholder='State / County' disabled={true} style={{ border: "1px solid black" }}></Select>
+                                                                        : <Select placeholder='State / County' disabled={false} style={{ border: "1px solid black" }} onChange={(e) => setCurrentStateChosen(e.target.value)}>
+                                                                            {
+                                                                                states !== null && states.map((state) => {
+                                                                                    const { id, name } = state;
+                                                                                    return <option key={id} value={name}>{name}</option>
+                                                                                })
+                                                                            }
+                                                                        </Select>
+                                                                }
+                                                            </div>
+
+                                                            <div className="mt-3">
+                                                                {
+                                                                    currentStateChosen === '' || currentCountrySelected === ''
+                                                                        ? <Input placeholder='City' disabled={true} style={{ border: "1px solid black" }} value='City'></Input>
+                                                                        : <Input placeholder='City' disabled={false} style={{ border: "1px solid black" }} value={city} onChange={(e) => setCity(e.target.value)} />
+                                                                }
+                                                            </div>
+
+                                                            <div className="mt-3">
+                                                                {
+                                                                    currentStateChosen === '' || currentCountrySelected === ''
+                                                                        ? <Input placeholder='Postal Code' disabled={true} style={{ border: "1px solid black" }} value='Postal Code'></Input>
+                                                                        : <Input type="number" placeholder='Postal Code' disabled={false} style={{ border: "1px solid black" }} value={postalCode} onChange={(e) => setPostalCode(e.target.value)} />
+                                                                }
+                                                            </div>
+
+                                                            <div className="mt-3">
+                                                                <Button colorScheme="white" style={{ width: "100%", backgroundColor: "black" }}><span className="font-bold tracking-wider">UPDATE</span></Button>
+                                                            </div>
+
+                                                        </ChakraProvider>
+
+                                                    </div>
                                                 </div>
+                                            </div>
+                                            <hr className="h-[0.1em] bg-black mt-5" />
+                                            <div className="mt-3">
+                                                <ChakraProvider>
+                                                    <Button colorScheme="white" style={{ width: "100%", backgroundColor: "black" }}><span className="font-bold tracking-wider">PROCEED TO CHECKOUT</span></Button>
+                                                </ChakraProvider>
                                             </div>
                                         </div>
                                     </div>
