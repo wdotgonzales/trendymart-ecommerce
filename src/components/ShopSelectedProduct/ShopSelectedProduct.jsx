@@ -9,6 +9,7 @@ import { Textarea, Input } from "@chakra-ui/react";
 import products from "../../products";
 import Item from "../Item/Item";
 import ItemModal from "../Item/ItemModal";
+import { useEffect } from "react";
 
 import ShopSelectedProductModal from "./components/ShopSelectedProductModal";
 const ShopSelectedProduct = () => {
@@ -30,6 +31,14 @@ const ShopSelectedProduct = () => {
     });
 
     const [isModalHidden, setIsModalHidden] = useState(true);
+    useEffect(() => {
+        if (isModalHidden) {
+            document.body.classList.remove('overflow-hidden');
+        } else {
+            document.body.classList.add('overflow-hidden');
+        }
+    }, [isModalHidden])
+
     const [currentImageForDisplayInModal, setCurrentImageForDisplayInModal] = useState();
 
     // Top 4 Popular Items
