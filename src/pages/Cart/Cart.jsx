@@ -20,6 +20,7 @@ const Cart = () => {
     const [currentStateChosen, setCurrentStateChosen] = useState('');
 
     const [city, setCity] = useState('');
+    const [address, setAddress] = useState('');
     const [postalCode, setPostalCode] = useState('');
 
 
@@ -236,6 +237,13 @@ const Cart = () => {
                                                                     currentStateChosen === '' || currentCountrySelected === ''
                                                                         ? <Input placeholder='City' disabled={true} style={{ border: "1px solid black" }} value='City'></Input>
                                                                         : <Input placeholder='City' disabled={false} style={{ border: "1px solid black" }} value={city} onChange={(e) => setCity(e.target.value)} />
+                                                                }
+                                                            </div>
+                                                            <div className="mt-3">
+                                                                {
+                                                                    currentStateChosen === '' || currentCountrySelected === ''
+                                                                        ? <Input placeholder='Address' disabled={true} style={{ border: "1px solid black" }} value='Address'></Input>
+                                                                        : <Input placeholder='Address' disabled={false} style={{ border: "1px solid black" }} value={address} onChange={(e) => setAddress(e.target.value)} />
                                                                 }
                                                             </div>
 
