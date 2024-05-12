@@ -1,0 +1,15 @@
+.bg-image-checkout {
+    background-image: url('https://wallpapercave.com/wp/wp7094551.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    height: 330px;
+    filter: brightness(0.6);
+}
+
+
+#hr {
+    background-color: black;
+    padding: 0.2px;
+}

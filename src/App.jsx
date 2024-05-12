@@ -14,6 +14,8 @@ import WishList from './pages/Wishlist/WishList';
 import ShopSelectedProduct from './components/ShopSelectedProduct/ShopSelectedProduct';
 import Cart from './pages/Cart/Cart';
 
+import Checkout from './pages/Checkout/Checkout';
+
 import products from './products';
 
 import { Route, Routes } from 'react-router-dom';
@@ -32,8 +34,10 @@ function App() {
       {/* <FAQ /> */}
       {/* <Shop /> */}
       {/* <WishList /> */}
+      <Checkout />
+      {/* <Cart /> */}
 
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/shop'>
           <Route index element={<Shop />} />
@@ -48,7 +52,7 @@ function App() {
         </Route>
         <Route path='/cart' element={<Cart />} />
         <Route path='*' element={<p>page not found</p>} />
-      </Routes>
+      </Routes> */}
     </>
   )
 }
