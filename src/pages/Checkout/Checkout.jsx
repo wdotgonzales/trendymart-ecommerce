@@ -5,7 +5,7 @@ import { Input, Select } from '@chakra-ui/react'
 
 import './styles/Checkout.css';
 
-import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
+import { Radio, RadioGroup, Stack, useRadioGroup } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 import useFetchPlace from "./hooks/useFetchPlace";
@@ -23,7 +23,19 @@ const Checkout = () => {
         state: '',
         city: '',
         address: '',
-        postalCode: ''
+        postalCode: '',
+        shippingOption: 'Free Shipping'
+    });
+
+    useEffect(() => {
+        console.log(billingDetails)
+    }, [billingDetails])
+
+    const { value: shippingOptionValue, onChange: setShippingOptionValue } = useRadioGroup({
+        name: 'myRadioGroup',
+        onChange: (newValue) =>
+            setBillingDetails({ ...billingDetails, shippingOption: newValue }),
+        value: billingDetails.shippingOption,
     });
 
     // This is for the select input's data.
@@ -74,6 +86,26 @@ const Checkout = () => {
         setBillingDetails({ ...billingDetails, state: '' });
     }, [billingDetails.country])
 
+    useEffect(() => {
+        if (billingDetails.state === '') {
+            setBillingDetails({ ...billingDetails, city: '', address: '', postalCode: '' });
+        }
+    }, [billingDetails.state])
+
+
+    const [showEmptyInputError, setShowEmptyInputError] = useState(false);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (billingDetails.firstName == "" || billingDetails.lastName == "" || billingDetails.country == "" || billingDetails.state == "" || billingDetails.city == "" || billingDetails.address == "" || billingDetails.postalCode == "") {
+            setShowEmptyInputError(true);
+        } else {
+            setShowEmptyInputError(false);
+            alert('success');
+        }
+    }
+
     return <>
         <ChakraProvider>
             <NavBar />
@@ -90,25 +122,24 @@ const Checkout = () => {
                         {
                             temporaryProductOrder.length !== 0
                                 ? <>
-
-                                    <form className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    <form className="grid grid-cols-1 lg:grid-cols-2 gap-8" onSubmit={handleSubmit}>
                                         {/* Grid Item 1 */}
                                         <div>
                                             <p className="font-bold tracking-wider text-[1.7em]">BILLING DETAILS</p>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-[2em]">
                                                 <div>
                                                     <p className="mb-1">First Name *</p>
-                                                    <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} />
+                                                    <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} value={billingDetails.firstName} onChange={(e) => setBillingDetails({ ...billingDetails, firstName: e.target.value })} />
                                                 </div>
                                                 <div>
                                                     <p className="mb-1">Last Name *</p>
-                                                    <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} />
+                                                    <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} value={billingDetails.lastName} onChange={(e) => setBillingDetails({ ...billingDetails, lastName: e.target.value })} />
                                                 </div>
                                             </div>
 
                                             <div className="mt-4">
                                                 <p className="mb-1">Company Name (Optional)</p>
-                                                <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} />
+                                                <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} value={billingDetails.companyName} onChange={(e) => setBillingDetails({ ...billingDetails, companyName: e.target.value })} />
                                             </div>
 
                                             <div className="mt-4">
@@ -169,17 +200,43 @@ const Checkout = () => {
 
                                             <div className="mt-4">
                                                 <p className="mb-1">City *</p>
-                                                <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} />
+                                                {
+                                                    billingDetails.state !== ''
+                                                        ? <Input
+                                                            size='md'
+                                                            style={{ padding: '1.4em', borderRadius: '0px' }}
+                                                            value={billingDetails.city}
+                                                            onChange={(e) => setBillingDetails({ ...billingDetails, city: e.target.value })} />
+                                                        : <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} disabled={true} value={billingDetails.city} />
+                                                }
                                             </div>
 
                                             <div className="mt-4">
                                                 <p className="mb-1">Address *</p>
-                                                <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} />
+                                                {
+                                                    billingDetails.state !== ''
+                                                        ? <Input
+                                                            size='md'
+                                                            style={{ padding: '1.4em', borderRadius: '0px' }}
+                                                            value={billingDetails.address}
+                                                            onChange={(e) => setBillingDetails({ ...billingDetails, address: e.target.value })} />
+                                                        : <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} disabled={true} value={billingDetails.address} />
+                                                }
                                             </div>
 
                                             <div className="mt-4">
                                                 <p className="mb-1">Postal Code *</p>
-                                                <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} type="number" />
+                                                {
+                                                    billingDetails.state !== ''
+                                                        ? <Input
+                                                            size='md'
+                                                            style={{ padding: '1.4em', borderRadius: '0px' }}
+                                                            value={billingDetails.postalCode}
+                                                            onChange={(e) => setBillingDetails({ ...billingDetails, postalCode: e.target.value })}
+                                                            type="number" />
+                                                        : <Input size='md' style={{ padding: '1.4em', borderRadius: '0px' }} type="number" disabled={true} value={billingDetails.postalCode} />
+
+                                                }
                                             </div>
                                         </div>
 
@@ -222,11 +279,11 @@ const Checkout = () => {
                                                 <div className="grid grid-cols-2 mb-2 items-center">
                                                     <div className="font-bold">Shipping</div>
                                                     <div className="">
-                                                        <RadioGroup defaultValue='1'>
+                                                        <RadioGroup value={shippingOptionValue} onChange={setShippingOptionValue}>
                                                             <Stack>
-                                                                <Radio value='1'>Free Shipping</Radio>
-                                                                <Radio value='2'>Local Pickup</Radio>
-                                                                <Radio value='3'>Flat Rate: $10</Radio>
+                                                                <Radio value='Free Shipping'>Free Shipping</Radio>
+                                                                <Radio value='Local Pickup'>Local Pickup</Radio>
+                                                                <Radio value='Flat Rate'>Flat Rate: $10</Radio>
                                                             </Stack>
                                                         </RadioGroup>
                                                     </div>
@@ -243,6 +300,7 @@ const Checkout = () => {
                                             </div>
 
                                             <input type="submit" className="bg-black text-white text-center w-full py-3 font-bold cursor-pointer" value='PLACE ORDER' />
+                                            {showEmptyInputError && <p className="text-red-600 text-[0.8em] mt-2">* Please fill up the required fields to continue.</p>}
                                         </div>
                                     </form>
                                 </>
