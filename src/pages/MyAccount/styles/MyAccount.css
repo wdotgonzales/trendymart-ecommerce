@@ -1,0 +1,9 @@
+.background-img-container-myAccount-1 {
+    background-image: url('https://image.cnbcfm.com/api/v1/image/107032274-1647540069295-gettyimages-1084167640-2018_10_13-n1_office_0312.jpeg?v=1647540545&w=1920&h=1080');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    height: 300px;
+    filter: brightness(0.5);
+}

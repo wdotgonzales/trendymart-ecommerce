@@ -15,6 +15,7 @@ import ShopSelectedProduct from './components/ShopSelectedProduct/ShopSelectedPr
 import Cart from './pages/Cart/Cart';
 
 import Checkout from './pages/Checkout/Checkout';
+import MyAccount from './pages/MyAccount/MyAccount';
 
 import products from './products';
 
@@ -34,8 +35,9 @@ function App() {
       {/* <FAQ /> */}
       {/* <Shop /> */}
       {/* <WishList /> */}
-      <Checkout />
+      {/* <Checkout /> */}
       {/* <Cart /> */}
+      <MyAccount/>
 
       {/* <Routes>
         <Route path='/' element={<HomePage />} />
